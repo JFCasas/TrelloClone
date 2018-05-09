@@ -1,6 +1,72 @@
-h1{
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
 
-  color:red;
+body,html{
+
+	margin:0;
+	padding: 0;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
+.container{
+
+	width: 70vw;
+	min-height:100vh;
+	margin: 0 auto;
+
+}
+
+
+.inicio{
+
+	text-align: center;
+
+}
+
+.dashboard{
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+
+}
+
+.card{
+
+	width: 20vw;
+	height:10vh;
+	margin-right: 2em;
+	margin-bottom: 2em;
+
+}
+
+.card:hover{
+
+	transform: scale(1.1,1.1);
+	cursor:pointer;
+
+}
+
+.cardgenerator{
+
+	width: 20vw;
+	height:10vh;
+	margin-right: 2em;
+	margin-bottom: 2em;
+	background-color: #90A4AE !important;
+}
+
+.cardgenerator:hover{
+
+	transform: scale(1.1,1.1);
+	cursor:pointer;
+}
+
+.cardtext{
+
+	font-size: 1.5em;
+	font-weight: 800;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
