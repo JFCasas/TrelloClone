@@ -1,11 +1,10 @@
 import React from 'react'
 
-import {Card, CardText, CardActions} from 'material-ui/Card';
-import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
+
 
 import FullCardGenerator from '../components/FullCardGenerator'
 import PartialCardGenerator from '../components/PartialCardGenerator'
+import CardBoard from '../components/CardBoard'
 
 export default class Home extends React.Component{
 
@@ -15,25 +14,31 @@ export default class Home extends React.Component{
 
 		this.state = {
 
-			fullCardGenerator : false
+			fullCardGenerator : false,
+			boards : []
 		}
 
 		this.choiceCardGenerator = this.choiceCardGenerator.bind(this)
 
-		this.changeCardGenerator = this.changeCardGenerator.bind(this)
-		this.changeCardGenerator2 = this.changeCardGenerator2.bind(this)
+		this.showCreateNewBoard = this.showCreateNewBoard.bind(this)
+		this.cancelCreateNewBoard = this.cancelCreateNewBoard.bind(this)
+		this.createNewBoard = this.createNewBoard.bind(this)
 	}
 
 	choiceCardGenerator(){
 
 		if (this.state.fullCardGenerator ) {
 
-			return <FullCardGenerator changeCardGenerator2={this.changeCardGenerator2}></FullCardGenerator>
+			return <FullCardGenerator 
+						cancelCreateNewBoard={this.cancelCreateNewBoard}
+						createNewBoard={this.createNewBoard}>
+					
+				   </FullCardGenerator>
 		}
-		return <PartialCardGenerator changeCardGenerator={this.changeCardGenerator}></PartialCardGenerator>
+		return <PartialCardGenerator showCreateNewBoard={this.showCreateNewBoard}></PartialCardGenerator>
 	}
 
-	changeCardGenerator(){
+	showCreateNewBoard(){
 
 		this.setState({
 
@@ -43,7 +48,7 @@ export default class Home extends React.Component{
 
     }
 
-	changeCardGenerator2(){
+	cancelCreateNewBoard(){
 
 		this.setState({
 
@@ -51,6 +56,27 @@ export default class Home extends React.Component{
       
       	})
 
+    }
+
+    createNewBoard(nameBoard){
+
+    	this.setState({
+
+        	boards: this.state.boards.concat(nameBoard)
+      
+      	})
+    }
+
+
+    boards(){
+
+    	return this.state.boards.map(board=>{
+
+    		return(
+
+    			<CardBoard board = {board} ></CardBoard>
+    		)
+    	})
     }
 
 	render(){
@@ -81,17 +107,9 @@ export default class Home extends React.Component{
 						<div className="dashboard">
 
 							{this.choiceCardGenerator()}
+							{this.boards()}
 
-							<Card className = "card">
-							  
-							  <CardText >
-
-							    
-							    <p className="cardtext">New Board</p>
-							  
-							  </CardText>
 							
-							</Card>
 
 
 						</div>
@@ -106,3 +124,8 @@ export default class Home extends React.Component{
 		)
 	}
 }
+
+
+/*boards es un arreglo que tiene en su interior los nombres de los diferentes boards
+
+Estos los vamos a ñadir desde el botón create de FullCardGenerator*/

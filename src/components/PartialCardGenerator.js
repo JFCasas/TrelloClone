@@ -9,7 +9,7 @@ export default class PartialCardGenerator extends React.Component{
 
 		return(
 
-			<Card className = "card" onClick={this.props.changeCardGenerator}>
+			<Card className = "card" onClick={this.props.showCreateNewBoard}>
 							  
 			  <CardText >
 
