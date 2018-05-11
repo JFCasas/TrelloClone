@@ -62,19 +62,19 @@ export default class Home extends React.Component{
 
     	this.setState({
 
-        	boards: this.state.boards.concat(nameBoard)
-      
+        	boards: this.state.boards.concat(nameBoard),
+      		fullCardGenerator: false
       	})
     }
 
 
     boards(){
 
-    	return this.state.boards.map(board=>{
+    	return this.state.boards.map((board,index)=>{
 
     		return(
 
-    			<CardBoard board = {board} ></CardBoard>
+    			<CardBoard board = {board} key= {index} ></CardBoard>
     		)
     	})
     }
@@ -126,6 +126,3 @@ export default class Home extends React.Component{
 }
 
 
-/*boards es un arreglo que tiene en su interior los nombres de los diferentes boards
-
-Estos los vamos a ñadir desde el botón create de FullCardGenerator*/

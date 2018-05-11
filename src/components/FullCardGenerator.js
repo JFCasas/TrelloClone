@@ -6,11 +6,17 @@ import FlatButton from 'material-ui/FlatButton';
 
 export default class FullCardGenerator extends React.Component{
 
-	/*prueba(){
+	constructor(props){
+
+		super(props)
+		this.createNewBoard = this.createNewBoard.bind(this)
+	}
+
+	createNewBoard(){
 
 		const nameBoard = this.refs.nameBoardField.getValue()
-		console.log(nameBoard)
-	}*/
+		this.props.createNewBoard(nameBoard)
+	}
 
 	render(){
 
@@ -33,10 +39,11 @@ export default class FullCardGenerator extends React.Component{
 
 			  <CardActions >
 			      <FlatButton label="Cancel" secondary={true} 
-			      			  onClick={this.props.cancelCreateNewBoard} 
+			      			  onClick={this.props.cancelCreateNewBoard}
+
 			      />
 			      <FlatButton label="Create" primary={true} 
-			      			  
+			      			  onClick={this.createNewBoard}
 			      />
 			  </CardActions>
 			  
@@ -50,4 +57,3 @@ export default class FullCardGenerator extends React.Component{
 }
 
 
-/*nameBoard : this.refs.nameBoardField.getValue()*/
