@@ -85,20 +85,7 @@ export default class Home extends React.Component{
 
 			<div className="container" >
 
-				<div className="row ">
-
-					<div className="col-xs-12 col-sm-12 col-md-12">
-
-						<div className="inicio">
-
-							<h3>Inicio</h3>
-								
-
-						</div>
-
-					</div>
-
-				</div>
+				
 
 				<div className="row" style={{"marginTop":"5em"}}>
 

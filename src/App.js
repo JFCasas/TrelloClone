@@ -4,15 +4,24 @@ import './App.css';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import Home from './pages/Home.js'
+
+import MyAppBar from './components/MyAppBar'
 
 class App extends Component {
   render() {
     return (
 
       <MuiThemeProvider>
+
+      	<div>
+
+      		<MyAppBar></MyAppBar>
+        	{this.props.children}
+      		
+
+      	</div>
       
-      	<Home></Home>
+      	
 
       </MuiThemeProvider>
     );

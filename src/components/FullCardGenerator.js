@@ -15,7 +15,17 @@ export default class FullCardGenerator extends React.Component{
 	createNewBoard(){
 
 		const nameBoard = this.refs.nameBoardField.getValue()
-		this.props.createNewBoard(nameBoard)
+		
+		if(nameBoard){
+
+			this.props.createNewBoard(nameBoard)
+		
+		}else{
+
+			alert("Debes de proporcionar un nombre")
+		} 
+
+		
 	}
 
 	render(){
