@@ -26,7 +26,7 @@ const styles = {
   
 };
 
-export default class Login extends React.Component {
+export default class Signup extends React.Component {
 
 	render(){
 
@@ -36,7 +36,7 @@ export default class Login extends React.Component {
 
 				
 
-		        <div >
+		    <div >
 
 					<TextField 
       				
@@ -46,7 +46,7 @@ export default class Login extends React.Component {
       					underlineStyle={styles.underlineStyle}
       					underlineFocusStyle={styles.underlineStyle}
       					floatingLabelStyle={styles.floatingLabelStyle}
-                		ref = 'emailField'
+                ref = 'emailField'
     				/>
 							
 
@@ -62,7 +62,7 @@ export default class Login extends React.Component {
       					underlineStyle={styles.underlineStyle}
       					underlineFocusStyle={styles.underlineStyle}
       					floatingLabelStyle={styles.floatingLabelStyle}
-                		ref = "passwordField"
+                ref = "passwordField"
     				/>
 					
 
@@ -70,12 +70,12 @@ export default class Login extends React.Component {
 
 				<div >
 
-		          <RaisedButton label="Login" secondary={true} 
+		          <RaisedButton label="Signup" secondary={true} 
 		            style = {{"width" : "10vw", "marginTop" : "5em"}}
 		            
 		          />
 
-		          <Link to="/signup" style={{"textDecoration": "none", "marginLeft" : "2em", "color" : grey900}}>I do not have an account</Link>
+		          <Link to="/login" style={{"textDecoration": "none", "marginLeft" : "2em", "color" : grey900}}>I already have an account</Link>
 		      
 		        </div>
 		      

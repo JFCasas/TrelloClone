@@ -9,11 +9,20 @@ import {
 
 import App from './App'
 
+import Dashboard from './pages/Dashboard.js'
 import Home from './pages/Home.js'
-
 import Login from './pages/Login.js'
+import Signup from './pages/Signup.js'
+
+const userLoggedIn = true;
 
 export default class Router extends React.Component {
+
+  home(){
+
+    if (userLoggedIn) return Dashboard
+    return Home
+  }
 
   render(){
 
@@ -23,8 +32,9 @@ export default class Router extends React.Component {
 
         <App>
 
-          <Route exact path="/" component={Home}></Route>
+          <Route exact path="/" component={this.home()}></Route>
           <Route path="/login" component={Login}></Route>
+          <Route path="/signup" component={Signup}></Route>
 
         </App>
         
