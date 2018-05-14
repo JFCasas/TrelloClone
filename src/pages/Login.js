@@ -13,6 +13,8 @@ import {
 
 } from 'react-router-dom';
 
+import { login } from '../requests/auth'
+
 const styles = {
   errorStyle: {
     color: orange500,
@@ -28,7 +30,37 @@ const styles = {
 
 export default class Login extends React.Component {
 
-	render(){
+	
+  constructor(props){
+
+    super(props)
+
+    this.requestAuth = this.requestAuth.bind(this)
+
+  }
+
+  requestAuth(){
+
+    const credentials = {
+
+      email : this.refs.emailField.getValue(),
+      password : this.refs.passwordField.getValue()
+    
+    }
+
+    login(credentials).then((response)=>{
+
+      console.log(response)
+    
+    }).catch((error)=>{
+
+      console.log(error)
+    })
+
+  }
+
+
+  render(){
 
 		return (
 
@@ -36,7 +68,7 @@ export default class Login extends React.Component {
 
 				
 
-		        <div >
+		    <div >
 
 					<TextField 
       				
@@ -46,7 +78,7 @@ export default class Login extends React.Component {
       					underlineStyle={styles.underlineStyle}
       					underlineFocusStyle={styles.underlineStyle}
       					floatingLabelStyle={styles.floatingLabelStyle}
-                		ref = 'emailField'
+                ref = 'emailField'
     				/>
 							
 
@@ -62,7 +94,7 @@ export default class Login extends React.Component {
       					underlineStyle={styles.underlineStyle}
       					underlineFocusStyle={styles.underlineStyle}
       					floatingLabelStyle={styles.floatingLabelStyle}
-                		ref = "passwordField"
+                ref = "passwordField"
     				/>
 					
 
@@ -72,7 +104,7 @@ export default class Login extends React.Component {
 
 		          <RaisedButton label="Login" secondary={true} 
 		            style = {{"width" : "10vw", "marginTop" : "5em"}}
-		            
+		            onClick = {this.requestAuth}
 		          />
 
 		          <Link to="/signup" style={{"textDecoration": "none", "marginLeft" : "2em", "color" : grey900}}>I do not have an account</Link>

@@ -12,11 +12,13 @@ export default class MyAppBar extends React.Component {
           
           title="TrelloClone"
 
-          style ={{"backgroundColor" : "#000" }}
+          style ={{"backgroundColor" : "#000", "cursor":"pointer" }}
 
           showMenuIconButton = {false}
 
           titleStyle ={{"color" : "#F5F5F5"}}
+
+          onTitleClick={this.props.goHome}
           
       />
 

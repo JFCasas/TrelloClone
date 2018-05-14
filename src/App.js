@@ -7,7 +7,24 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import MyAppBar from './components/MyAppBar'
 
+import { withRouter } from 'react-router-dom'
+
 class App extends Component {
+  
+  constructor(props){
+
+    super(props)
+
+    this.goHome = this.goHome.bind(this)
+  }
+  
+
+  goHome(){
+
+    this.props.history.push('/')
+  }
+
+
   render() {
     return (
 
@@ -15,7 +32,7 @@ class App extends Component {
 
       	<div>
 
-      		<MyAppBar></MyAppBar>
+      		<MyAppBar goHome= {this.goHome}></MyAppBar>
         	{this.props.children}
       		
 
@@ -28,4 +45,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

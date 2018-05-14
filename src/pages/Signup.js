@@ -13,6 +13,10 @@ import {
 
 } from 'react-router-dom';
 
+import { signUp } from '../requests/auth'
+
+
+
 const styles = {
   errorStyle: {
     color: orange500,
@@ -28,7 +32,36 @@ const styles = {
 
 export default class Signup extends React.Component {
 
-	render(){
+	constructor(props){
+
+    super(props)
+
+    this.createAccount = this.createAccount.bind(this)
+  }
+
+  createAccount(){
+
+    const credentials = {
+
+      email : this.refs.emailField.getValue(),
+      password : this.refs.passwordField.getValue()
+    
+    }
+
+
+    signUp(credentials).then((response)=>{
+
+      console.log(response)
+    
+    }).catch((error)=>{
+
+      console.log(error)
+    })
+
+  }
+
+
+  render(){
 
 		return (
 
@@ -72,6 +105,7 @@ export default class Signup extends React.Component {
 
 		          <RaisedButton label="Signup" secondary={true} 
 		            style = {{"width" : "10vw", "marginTop" : "5em"}}
+                onClick = {this.createAccount}
 		            
 		          />
 
