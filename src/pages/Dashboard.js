@@ -1,10 +1,10 @@
 import React from 'react'
 
-
-
 import FullCardGenerator from '../components/FullCardGenerator'
 import PartialCardGenerator from '../components/PartialCardGenerator'
 import CardBoard from '../components/CardBoard'
+
+import {getDashboards} from '../requests/dashboards.js'
 
 export default class Dashboard extends React.Component{
 
@@ -17,6 +17,8 @@ export default class Dashboard extends React.Component{
 			fullCardGenerator : false,
 			boards : []
 		}
+
+		this.loadboards()
 
 		this.choiceCardGenerator = this.choiceCardGenerator.bind(this)
 
@@ -60,9 +62,13 @@ export default class Dashboard extends React.Component{
 
     createNewBoard(nameBoard){
 
+    	let newBoard = {}
+    	
+    	newBoard["name"] = nameBoard
+    	
     	this.setState({
 
-        	boards: this.state.boards.concat(nameBoard),
+    		boards: this.state.boards.concat(newBoard),
       		fullCardGenerator: false
       	})
     }
@@ -77,6 +83,22 @@ export default class Dashboard extends React.Component{
     			<CardBoard board = {board} key= {index} ></CardBoard>
     		)
     	})
+    }
+
+    loadboards(){
+
+    	getDashboards().then((jsonR)=>{
+
+	      console.log(jsonR);
+
+	      this.setState({
+
+	        boards : jsonR
+	      
+	      })
+
+	    })
+	   
     }
 
 	render(){

@@ -15,7 +15,7 @@ export default class CardBoard extends React.Component{
 			  <CardText >
 
 			    
-			    <p className="cardtext">{this.props.board}</p>
+			    <p className="cardtext">{this.props.board.name}</p>
 			  
 			  
 			  </CardText>
