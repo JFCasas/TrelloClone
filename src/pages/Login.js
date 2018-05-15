@@ -15,6 +15,10 @@ import {
 
 import { login } from '../requests/auth'
 
+import { connect } from 'react-redux'
+
+import * as actions from '../actions/userActions'
+
 const styles = {
   errorStyle: {
     color: orange500,
@@ -28,7 +32,7 @@ const styles = {
   
 };
 
-export default class Login extends React.Component {
+class Login extends React.Component {
 
 	
   constructor(props){
@@ -50,7 +54,9 @@ export default class Login extends React.Component {
 
     login(credentials).then((response)=>{
 
-      //console.log(response)
+      //console.log(response.jwt)
+
+      this.props.dispatch(actions.login(response.jwt))
     
     }).catch((error)=>{
 
@@ -117,5 +123,15 @@ export default class Login extends React.Component {
 
 }
 
+
+function mapStateToProps(state,ownProps){
+
+  return {
+
+    user : state.user
+  }
+}
+
+export default connect(mapStateToProps)(Login)
 
 

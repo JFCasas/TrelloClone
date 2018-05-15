@@ -14,7 +14,7 @@ import Home from './pages/Home.js'
 import Login from './pages/Login.js'
 import Signup from './pages/Signup.js'
 
-const userLoggedIn = true;
+const userLoggedIn = false;
 
 export default class Router extends React.Component {
 

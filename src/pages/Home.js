@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {Card} from 'material-ui/Card';
+
 import FlatButton from 'material-ui/FlatButton';
 
 import {Link} from 'react-router-dom'
@@ -17,6 +19,8 @@ export default class Home extends React.Component{
 				<div className="row" style={{"marginTop":"5em"}}>
 
 					<div className="col-xs-12 col-sm-12 col-md-12">
+
+					  <Card style = {{"padding": "4em"}}>
 
 						<div className="home">
 
@@ -41,6 +45,8 @@ export default class Home extends React.Component{
 							</Link>
 
 						</div>
+
+					  </Card>
 
 					</div>
 
