@@ -72,11 +72,11 @@ class Login extends React.Component {
 
 			<div className = "formulario"  >
 
-				
+				<h1>{this.props.user.jwt}</h1>
 
 		    <div >
 
-					<TextField 
+          <TextField 
       				
       					floatingLabelText="Email"
       					type="email"
