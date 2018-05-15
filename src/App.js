@@ -16,6 +16,8 @@ class App extends Component {
     super(props)
 
     this.goHome = this.goHome.bind(this)
+
+    console.log(props)
   }
   
 

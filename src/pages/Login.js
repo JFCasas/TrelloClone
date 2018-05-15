@@ -50,7 +50,7 @@ export default class Login extends React.Component {
 
     login(credentials).then((response)=>{
 
-      console.log(response)
+      //console.log(response)
     
     }).catch((error)=>{
 
@@ -64,7 +64,7 @@ export default class Login extends React.Component {
 
 		return (
 
-			<div className = "formulario" style ={{'backgroundImage' : "url("+process.env.PUBLIC_URL + '/images/pexels-photo-935871.jpeg'+")"}} >
+			<div className = "formulario"  >
 
 				
 
