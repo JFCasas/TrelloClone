@@ -4,9 +4,13 @@ import FullCardGenerator from '../components/FullCardGenerator'
 import PartialCardGenerator from '../components/PartialCardGenerator'
 import CardBoard from '../components/CardBoard'
 
-import {getDashboards} from '../requests/dashboards.js'
+import {getDashboards,createDashboard} from '../requests/dashboards.js'
 
-export default class Dashboard extends React.Component{
+import { connect } from 'react-redux'
+
+import { push } from 'react-router-redux'
+
+class Dashboard extends React.Component{
 
 	constructor(props){
 
@@ -62,16 +66,37 @@ export default class Dashboard extends React.Component{
 
     createNewBoard(nameBoard){
 
-    	let newBoard = {}
-    	
-    	newBoard["name"] = nameBoard
-    	
-    	this.setState({
+
+    	const data = {
+
+      		name : nameBoard
+      		
+    	}
+
+		/*this.setState({
 
     		boards: this.state.boards.concat(newBoard),
       		fullCardGenerator: false
-      	})
-    }
+      	})*/
+
+      	
+		createDashboard(data,this.props.user.jwt).then((response)=>{
+
+	      
+			this.loadboards()
+
+			this.setState({
+
+        		fullCardGenerator: false
+      
+      		})
+	      
+
+	    }).catch((error)=>{
+
+	      console.log(error)
+	    })
+	}
 
 
     boards(){
@@ -133,5 +158,16 @@ export default class Dashboard extends React.Component{
 		)
 	}
 }
+
+function mapStateToProps(state,ownProps){
+
+	return {
+
+		user: state.user
+	}
+
+}
+
+export default connect(mapStateToProps)(Dashboard)
 
 
