@@ -1,8 +1,10 @@
-import {createStore, combineReducers, compose} from 'redux'
+import {createStore, combineReducers, compose, applyMiddleware} from 'redux'
 
 import persistState from 'redux-localstorage'
 
 import reducers from '../reducers'
+
+import {routerReducer} from 'react-router-redux'
 
 const enhancer = compose(
 
@@ -12,10 +14,14 @@ const enhancer = compose(
 
 const rootReducer = combineReducers({
 
-  ...reducers
+  ...reducers,
+  router: routerReducer
 })
 
-export default function configureStore(){
+export default function configureStore(middleware){
 
-  return createStore(rootReducer,{},enhancer)
+  return createStore(
+    rootReducer,
+    applyMiddleware(middleware),
+    enhancer)
 }

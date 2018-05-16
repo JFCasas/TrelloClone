@@ -15,6 +15,12 @@ import {
 
 import { signUp } from '../requests/auth'
 
+import { connect } from 'react-redux'
+
+import * as actions from '../actions/userActions'
+
+import { push } from 'react-router-redux'
+
 
 
 const styles = {
@@ -30,7 +36,7 @@ const styles = {
   
 };
 
-export default class Signup extends React.Component {
+class Signup extends React.Component {
 
 	constructor(props){
 
@@ -51,7 +57,11 @@ export default class Signup extends React.Component {
 
     signUp(credentials).then((response)=>{
 
-      //console.log(response)
+      this.props.dispatch(actions.login(response.jwt))
+
+      this.props.dispatch(actions.loadUser(response.user))
+
+      this.props.dispatch(push('/'))
     
     }).catch((error)=>{
 
@@ -118,3 +128,13 @@ export default class Signup extends React.Component {
 	}
 
 }
+
+function mapStateToProps(state,ownProps){
+
+  return {
+
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Signup)

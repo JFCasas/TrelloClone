@@ -14,13 +14,17 @@ import Home from './pages/Home.js'
 import Login from './pages/Login.js'
 import Signup from './pages/Signup.js'
 
-const userLoggedIn = false;
+import { connect } from 'react-redux'
 
-export default class Router extends React.Component {
+import { ConnectedRouter } from 'react-router-redux'
+
+//const userLoggedIn = false;
+
+class Router extends React.Component {
 
   home(){
 
-    if (userLoggedIn) return Dashboard
+    if (this.props.user.jwt) return Dashboard
     return Home
   }
 
@@ -28,7 +32,7 @@ export default class Router extends React.Component {
 
     return (
 
-      <ReactRouter>
+      <ConnectedRouter history={this.props.history}>
 
         <App>
 
@@ -38,11 +42,21 @@ export default class Router extends React.Component {
 
         </App>
         
-      </ReactRouter>
+      </ConnectedRouter>
 
     )
   
   }
 
 }
+
+function mapStateToProps(state,ownProps){
+
+  return {
+
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Router)
 

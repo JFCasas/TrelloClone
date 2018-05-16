@@ -5,7 +5,7 @@ import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
-import MyAppBar from './components/MyAppBar'
+import MyAppBarContainer from './components/navegacion/MyAppBarContainer'
 
 import { withRouter } from 'react-router-dom'
 
@@ -34,7 +34,7 @@ class App extends Component {
 
       	<div>
 
-      		<MyAppBar goHome= {this.goHome}></MyAppBar>
+      		<MyAppBarContainer goHome= {this.goHome}></MyAppBarContainer>
         	{this.props.children}
       		
 
