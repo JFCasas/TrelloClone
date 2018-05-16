@@ -4,7 +4,7 @@ import FullCardGenerator from '../components/FullCardGenerator'
 import PartialCardGenerator from '../components/PartialCardGenerator'
 import CardBoard from '../components/CardBoard'
 
-import {getDashboards,createDashboard} from '../requests/dashboards.js'
+import {getDashboards,createDashboard,deleteDashboard} from '../requests/dashboards.js'
 
 import { connect } from 'react-redux'
 
@@ -29,6 +29,7 @@ class Dashboard extends React.Component{
 		this.showCreateNewBoard = this.showCreateNewBoard.bind(this)
 		this.cancelCreateNewBoard = this.cancelCreateNewBoard.bind(this)
 		this.createNewBoard = this.createNewBoard.bind(this)
+		this.eliminateBoard = this.eliminateBoard.bind(this)
 	}
 
 	choiceCardGenerator(){
@@ -98,6 +99,27 @@ class Dashboard extends React.Component{
 	    })
 	}
 
+	eliminateBoard(slug){
+
+		deleteDashboard(slug,this.props.user.jwt).then((response)=>{
+
+	      	console.log(response)
+			
+			/*this.loadboards()
+
+			this.setState({
+
+        		fullCardGenerator: false
+      
+      		})*/
+	      
+
+	    }).catch((error)=>{
+
+	      console.log(error)
+	    })
+	}
+
 
     boards(){
 
@@ -105,7 +127,11 @@ class Dashboard extends React.Component{
 
     		return(
 
-    			<CardBoard board = {board} key= {index} ></CardBoard>
+    			<CardBoard board = {board} key= {index} 
+    					   eliminateBoard = {this.eliminateBoard}
+    			>
+    				
+				</CardBoard>
     		)
     	})
     }

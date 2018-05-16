@@ -10,15 +10,28 @@ export default class CardBoard extends React.Component{
 
 		return(
 
-			<Card className = "card">
-							  
-			  <CardText >
+			<Card className="card">
 
-			    
-			    <p className="cardtext">{this.props.board.name}</p>
+			  <div className="aux-card">
+
+			  	  <span className="x" 
+			  	  		onClick={this.props.eliminateBoard(this.props.board.slug)}
+			  	  >x
+			  	  </span>			  
 			  
+				  <CardText >
+
+				    
+				    <p className="cardtext">{this.props.board.name}</p>
+				  
+				  
+				  </CardText>
+
+				  
+				  	
+
+			  </div>
 			  
-			  </CardText>
 			
 			</Card>
 
