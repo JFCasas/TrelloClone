@@ -78,6 +78,7 @@ body,html{
 	align-items: center;
 	justify-content: center;
 
+
 }
 
 
@@ -102,6 +103,15 @@ body,html{
     
     flex-direction:column;
     font-size: 1.3em;
+
+}
+
+.board{
+
+	width: 20vw;
+	min-height:10vh;
+	margin-right: 2em;
+	margin-bottom: 2em;
 
 }
 

@@ -61,7 +61,23 @@ function deleteDashboard(slug,jwt){
 	})
 }
 
+function getBoard(slug){
+
+	
+	return fetch("http://127.0.0.1:3001/dashboards/" + slug, {
+
+		
+	
+	}).then((response)=>{
+
+		return response.json()
+	
+	}).catch((error)=>{
+
+		console.log(error)
+	})
+}
 
 
 
-export {getDashboards,createDashboard,deleteDashboard}
+export {getDashboards,createDashboard,deleteDashboard,getBoard}

@@ -10,6 +10,8 @@ import { connect } from 'react-redux'
 
 import { push } from 'react-router-redux'
 
+import { Link } from 'react-router-dom'
+
 class Dashboard extends React.Component{
 
 	constructor(props){
@@ -128,11 +130,16 @@ class Dashboard extends React.Component{
 
     		return(
 
-    			<CardBoard board = {board} key= {index} 
+    			<Link to = {"/dashboards/" + board.slug} style={{"textDecoration": "none"}}>
+
+    					<CardBoard board = {board} key= {index} 
     					   eliminateBoard = {this.eliminateBoard}
-    			>
+    					>
     				
-				</CardBoard>
+						</CardBoard>
+				
+				</Link>
+
     		)
     	})
     }

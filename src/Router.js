@@ -13,6 +13,7 @@ import Dashboard from './pages/Dashboard.js'
 import Home from './pages/Home.js'
 import Login from './pages/Login.js'
 import Signup from './pages/Signup.js'
+import Board from './pages/Board.js'
 
 import { connect } from 'react-redux'
 
@@ -39,6 +40,8 @@ class Router extends React.Component {
           <Route exact path="/" component={this.home()}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/signup" component={Signup}></Route>
+
+          <Route path="/dashboards/:slug" component={Board}></Route>
 
         </App>
         
