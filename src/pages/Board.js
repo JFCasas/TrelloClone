@@ -2,6 +2,8 @@ import React from 'react'
 
 import {Card, CardText} from 'material-ui/Card';
 
+import ListGenerator from '../components/ListGenerator'
+
 import { withRouter } from 'react-router-dom'
 
 import { connect } from 'react-redux'
@@ -59,6 +61,23 @@ class Board extends React.Component{
 				  			</CardText>
 
 						</Card>
+
+					</div>
+
+				</div>
+
+				<div className="row" style={{"marginTop":"5em"}}>
+
+					<div className="col-xs-12 col-sm-12 col-md-12">
+
+						<div className="dashboard">
+
+							<ListGenerator></ListGenerator>
+
+							
+
+
+						</div>
 
 					</div>
 
