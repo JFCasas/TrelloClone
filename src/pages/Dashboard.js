@@ -101,22 +101,23 @@ class Dashboard extends React.Component{
 
 	eliminateBoard(slug){
 
+		
+
 		deleteDashboard(slug,this.props.user.jwt).then((response)=>{
 
-	      	console.log(response)
-			
-			/*this.loadboards()
+	      	this.loadboards()
 
 			this.setState({
 
         		fullCardGenerator: false
       
-      		})*/
+      		})
 	      
 
 	    }).catch((error)=>{
 
 	      console.log(error)
+	    
 	    })
 	}
 

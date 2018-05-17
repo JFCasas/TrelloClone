@@ -42,17 +42,16 @@ body,html{
 
 .aux-card{
 
-	position: relative
+	position: relative;
 }
 
 .x{
 
-	color:red;
-	font-size: 1.5em;
 	position: absolute;
 	top: .1em;
 	right: .1em;
 }
+
 
 .cardgenerator{
 

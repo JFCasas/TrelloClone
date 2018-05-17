@@ -1,6 +1,9 @@
 import React from 'react'
 
 import {Card, CardText} from 'material-ui/Card';
+import IconButton from 'material-ui/IconButton';
+import FontIcon from 'material-ui/FontIcon';
+import ActionDelete from 'material-ui/svg-icons/action/delete';
 
 
 
@@ -14,11 +17,18 @@ export default class CardBoard extends React.Component{
 
 			  <div className="aux-card">
 
-			  	  <span className="x" 
-			  	  		onClick={this.props.eliminateBoard(this.props.board.slug)}
-			  	  >x
-			  	  </span>			  
-			  
+			  	  <div className="x">
+				    
+					<IconButton tooltip="Delete" tooltipPosition = "bottom-left"
+								
+								onClick={()=>{this.props.eliminateBoard(this.props.board.slug)}}
+					>
+				      <ActionDelete  />
+				    </IconButton>
+
+				  </div>
+
+			  	  
 				  <CardText >
 
 				    
@@ -28,8 +38,6 @@ export default class CardBoard extends React.Component{
 				  </CardText>
 
 				  
-				  	
-
 			  </div>
 			  
 			
