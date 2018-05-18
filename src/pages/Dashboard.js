@@ -107,13 +107,15 @@ class Dashboard extends React.Component{
 
 		deleteDashboard(slug,this.props.user.jwt).then((response)=>{
 
-	      	this.loadboards()
+	      	this.props.dispatch(push('/'))
 
-			this.setState({
+	      	//this.loadboards()
+
+			/*this.setState({
 
         		fullCardGenerator: false
       
-      		})
+      		})*/
 	      
 
 	    }).catch((error)=>{

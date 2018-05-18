@@ -33,11 +33,18 @@ class Board extends React.Component{
 
 			//console.log(jsonR)
 
-			this.setState({
+			if (jsonR) {
 
-        		board : jsonR
+				this.setState({
+
+        			board : jsonR
       
-      		})
+      			})
+			}
+
+
+
+			
 		})
 
 	}
@@ -58,7 +65,9 @@ class Board extends React.Component{
 
 							<CardText >
 
-				    			<p className="cardtext">{this.state.board.name}</p>
+								<p className="cardtext">{this.state.board.name}</p>
+
+				    			
 				  
 				  			</CardText>
 
