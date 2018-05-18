@@ -1,8 +1,16 @@
-function getDashboards(){
+function getDashboards(jwt){
 
-  return fetch("http://127.0.0.1:3001/dashboards")
+  return fetch("http://127.0.0.1:3001/dashboards", {
 
-  	.then((response)=>{
+		method: 'GET',
+		
+		headers:{
+			'Content-Type': 'application/json',
+			'Authorization' : 'Bearer ' + jwt,
+			'Accept': 'application/json'
+		}
+
+  	}).then((response)=>{
 
 	  return response.json()
     
@@ -61,12 +69,18 @@ function deleteDashboard(slug,jwt){
 	})
 }
 
-function getBoard(slug){
+function getBoard(slug,jwt){
 
 	
 	return fetch("http://127.0.0.1:3001/dashboards/" + slug, {
 
+		method: 'GET',
 		
+		headers:{
+			'Content-Type': 'application/json',
+			'Authorization' : 'Bearer ' + jwt,
+			'Accept': 'application/json'
+		}		
 	
 	}).then((response)=>{
 

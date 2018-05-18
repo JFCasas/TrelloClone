@@ -22,14 +22,16 @@ class Board extends React.Component{
        	}
 
        	this.loadBoard(slug)
+
+       	//console.log(this.state.board)
 	
 	}
 
 	loadBoard(slug){
 
-		getBoard(slug).then((jsonR)=>{
+		getBoard(slug,this.props.user.jwt).then((jsonR)=>{
 
-			console.log(jsonR)
+			//console.log(jsonR)
 
 			this.setState({
 
@@ -66,7 +68,7 @@ class Board extends React.Component{
 
 				</div>
 
-				<div className="row" style={{"marginTop":"5em"}}>
+				<div className="row" style={{"marginTop":"2em"}}>
 
 					<div className="col-xs-12 col-sm-12 col-md-12">
 

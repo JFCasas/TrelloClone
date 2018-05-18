@@ -17,7 +17,7 @@ class App extends Component {
 
     this.goHome = this.goHome.bind(this)
 
-    console.log(props)
+    //console.log(props)
   }
   
 

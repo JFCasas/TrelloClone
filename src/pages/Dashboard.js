@@ -146,9 +146,9 @@ class Dashboard extends React.Component{
 
     loadboards(){
 
-    	getDashboards().then((jsonR)=>{
+    	getDashboards(this.props.user.jwt).then((jsonR)=>{
 
-	      console.log(jsonR);
+	      //console.log(jsonR);
 
 	      this.setState({
 
