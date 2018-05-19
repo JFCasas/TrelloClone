@@ -1,14 +1,18 @@
 import React from 'react'
 
-import {Card, CardText} from 'material-ui/Card';
+
 
 import ListGenerator from '../components/ListGenerator'
+
+import CardListName from '../components/CardListName'
 
 import { withRouter } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 
 import {getBoard} from '../requests/dashboards.js'
+
+import {createList} from '../requests/lists.js'
 
 class Board extends React.Component{
 
@@ -19,11 +23,14 @@ class Board extends React.Component{
 		this.state = {
 
        		board: {}
+       		
        	}
 
        	this.loadBoard(slug)
 
        	//console.log(this.state.board)
+
+       	this.createList = this.createList.bind(this)
 	
 	}
 
@@ -42,12 +49,36 @@ class Board extends React.Component{
       			})
 			}
 
-
-
-			
 		})
 
 	}
+
+	createList(nameList){
+
+
+    	const data = {
+
+      		name : nameList,
+      		_dashboard : this.state.board._id
+      		
+    	}
+
+    	//console.log(data)
+
+		createList(data,this.props.user.jwt).then((response)=>{
+
+	      	console.log(response)
+			
+			//this.loadLists()
+
+			
+	    }).catch((error)=>{
+
+	      console.log(error)
+	    })
+	}
+
+	
 
 	render(){
 
@@ -61,17 +92,9 @@ class Board extends React.Component{
 
 					<div className="col-xs-12 col-sm-12 col-md-12">
 
-						<Card className="board">
+						
 
-							<CardText >
-
-								<p className="cardtext">{this.state.board.name}</p>
-
-				    			
-				  
-				  			</CardText>
-
-						</Card>
+						<CardListName listName = {this.state.board.name}></CardListName>
 
 					</div>
 
@@ -83,9 +106,10 @@ class Board extends React.Component{
 
 						<div className="dashboard">
 
-							<ListGenerator></ListGenerator>
-
-							
+							<ListGenerator
+								createList={this.createList}>
+							>
+							</ListGenerator>
 
 
 						</div>

@@ -5,16 +5,48 @@ import TextField from 'material-ui/TextField';
 
 export default class ListGenerator extends React.Component{
 
+	createNewList(){
+
+		const nameList = this.refs.nameListField.getValue()
+		
+		if(nameList){
+
+			this.props.createList(nameList)
+		
+		}else{
+
+			alert("Debes de proporcionar un nombre")
+		} 
+
+		
+	}
+
+	onKeyPress1 = (e) => {
+        
+        if(e.key === 'Enter'){
+            this.createNewList()
+            
+        }
+    }
+
+
 	render(){
 
 		return(
 
-			<Card style={{"padding":"2em"}}>
+			<Card style={{"padding":"2em"}}
+				  
+			>
 				
 				<TextField 
-				hintText="add a List"
-				ref = 'nameListField'
+					hintText="add a List"
+					ref = 'nameListField'
+					onKeyPress={ (e) => this.onKeyPress1(e) }
+
+				
 				/>
+
+				
 			
 			</Card>
 
