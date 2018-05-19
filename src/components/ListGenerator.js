@@ -34,7 +34,7 @@ export default class ListGenerator extends React.Component{
 
 		return(
 
-			<Card style={{"padding":"2em"}}
+			<Card style={{"padding":"2em"}} className = "listgenerator" >
 				  
 			>
 				

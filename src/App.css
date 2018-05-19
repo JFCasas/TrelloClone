@@ -115,5 +115,27 @@ body,html{
 
 }
 
+.list{
+
+	width: 20vw;
+	min-height:10vh;
+	margin-right: 2em;
+	margin-bottom: 2em;
+
+}
+
+.listgenerator{
+
+	width: 20vw;
+	min-height:10vh;
+	margin-right: 2em;
+	margin-bottom: 2em;
+	display:flex;
+  	align-items: center;
+  	justify-content: center;
+}
+
+
+
 
 

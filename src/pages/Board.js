@@ -6,13 +6,15 @@ import ListGenerator from '../components/ListGenerator'
 
 import CardListName from '../components/CardListName'
 
+import CardList from '../components/CardList'
+
 import { withRouter } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 
 import {getBoard} from '../requests/dashboards.js'
 
-import {createList} from '../requests/lists.js'
+import {createList,getlists} from '../requests/lists.js'
 
 class Board extends React.Component{
 
@@ -22,11 +24,14 @@ class Board extends React.Component{
 		const slug = props.match.params.slug
 		this.state = {
 
-       		board: {}
+       		board: {},
+       		lists: []
        		
        	}
 
        	this.loadBoard(slug)
+
+       	this.loadlists()
 
        	//console.log(this.state.board)
 
@@ -67,9 +72,9 @@ class Board extends React.Component{
 
 		createList(data,this.props.user.jwt).then((response)=>{
 
-	      	console.log(response)
+	      	//console.log(response)
 			
-			//this.loadLists()
+			this.loadlists()
 
 			
 	    }).catch((error)=>{
@@ -77,6 +82,47 @@ class Board extends React.Component{
 	      console.log(error)
 	    })
 	}
+
+	eliminateList(){
+
+
+	}
+
+	loadlists(){
+
+    	getlists(this.props.user.jwt).then((jsonR)=>{
+
+	      //console.log(jsonR);
+
+	      this.setState({
+
+	        lists : jsonR
+	      
+	      })
+
+	    })
+	   
+    }
+
+    lists(){
+
+    	return this.state.lists.map((list,index)=>{
+
+    		return(
+
+    			
+
+    			<CardList list = {list} key= {index} 
+    					   eliminateList = {this.eliminateList}
+    			>
+    				
+				</CardList>
+				
+				
+
+    		)
+    	})
+    }
 
 	
 
@@ -104,12 +150,14 @@ class Board extends React.Component{
 
 					<div className="col-xs-12 col-sm-12 col-md-12">
 
-						<div className="dashboard">
-
-							<ListGenerator
+						<ListGenerator
 								createList={this.createList}>
 							>
-							</ListGenerator>
+						</ListGenerator>
+
+						<div className="dashboard">
+
+							{this.lists()}
 
 
 						</div>
