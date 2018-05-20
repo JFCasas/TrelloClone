@@ -31,7 +31,7 @@ class Board extends React.Component{
 
        	this.loadBoard(slug)
 
-       	this.loadlists()
+       	this.loadlists(slug)
 
        	//console.log(this.state.board)
 
@@ -68,13 +68,17 @@ class Board extends React.Component{
       		
     	}
 
+    	const slug = this.props.match.params.slug
+
     	//console.log(data)
 
 		createList(data,this.props.user.jwt).then((response)=>{
 
 	      	//console.log(response)
+
+	      	//console.log(slug)
 			
-			this.loadlists()
+			this.loadlists(slug)
 
 			
 	    }).catch((error)=>{
@@ -88,9 +92,9 @@ class Board extends React.Component{
 
 	}
 
-	loadlists(){
+	loadlists(slug){
 
-    	getlists(this.props.user.jwt).then((jsonR)=>{
+    	getlists(this.props.user.jwt,slug).then((jsonR)=>{
 
 	      //console.log(jsonR);
 

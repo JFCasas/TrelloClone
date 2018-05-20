@@ -21,9 +21,9 @@ function createList(data,jwt){
 	})
 }
 
-function getlists(jwt){
+function getlists(jwt,slug){
 
-  return fetch("http://127.0.0.1:3001/lists", {
+  return fetch("http://127.0.0.1:3001/dashboards/" + slug + "/lists", {
 
 		method: 'GET',
 		
@@ -34,6 +34,8 @@ function getlists(jwt){
 		}
 
   	}).then((response)=>{
+
+  		//console.log(response)
 
 	  return response.json()
     
