@@ -20,3 +20,5 @@ function createTask(data,jwt){
 		console.log(error)
 	})
 }
+
+export {createTask}
