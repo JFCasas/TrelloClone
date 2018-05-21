@@ -3,7 +3,9 @@ import React from 'react'
 import {Card, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 
-import {createTask} from '../requests/tasks.js'
+import {createTask,getTasks} from '../requests/tasks.js'
+
+import CardTask from './CardTask.js'
 
 export default class CardList extends React.Component{
 
@@ -11,6 +13,15 @@ export default class CardList extends React.Component{
 
 		super(props)
 		//console.log(props.user.jwt)
+		this.state = {
+
+       		tasks: []
+       		
+       	}
+
+       	this.loadTasks()
+
+       	
 		this.createNewTask = this.createNewTask.bind(this)
 	}
 	
@@ -25,7 +36,7 @@ export default class CardList extends React.Component{
       		
     	}
 
-    	console.log(data)
+    	//console.log(data)
 
     	//const slug = this.props.match.params.slug
 
@@ -35,7 +46,7 @@ export default class CardList extends React.Component{
 
 	      	//console.log(slug)
 			
-			//this.loadlists(slug)
+			this.loadTasks()
 
 			
 	    }).catch((error)=>{
@@ -45,14 +56,53 @@ export default class CardList extends React.Component{
 
 	}
 
+	loadTasks(){
+
+    	getTasks(this.props.user.jwt).then((jsonR)=>{
+
+	      console.log(jsonR);
+
+	      this.setState({
+
+	        tasks : jsonR
+	      
+	      })
+
+	    })
+	   
+    }
+
+    tasks(){
+
+    	return this.state.tasks.map((task,index)=>{
+
+    		return(
+
+    			
+
+    			<CardTask task = {task} key= {index} 
+    					   
+    			>
+    				
+				</CardTask>
+				
+				
+
+    		)
+    	})
+    }
+
 
 	onKeyPress1 = (e) => {
         
         if(e.key === 'Enter'){
+            
             this.createNewTask()
             
         }
     }
+
+    
 
 	render(){
 
@@ -95,9 +145,11 @@ export default class CardList extends React.Component{
 					ref = 'nameTaskField'
 					onKeyPress={ (e) => this.onKeyPress1(e) }
 
-				
-				  	/>
+					/>
 				  	
+
+				    {this.tasks()}
+
 
 				  </div>
 

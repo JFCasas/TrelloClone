@@ -148,6 +148,17 @@ body,html{
 	display:flex;
 	align-items: center;
   	justify-content: center;
+  	flex-direction:column;
+
+}
+
+.task{
+
+	width: 20vw;
+	min-height:10vh;
+	margin-right: 2em;
+	margin-bottom: 2em;
+
 }
 
 
