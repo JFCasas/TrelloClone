@@ -14,7 +14,9 @@ import { connect } from 'react-redux'
 
 import {getBoard} from '../requests/dashboards.js'
 
-import {createList,getlists} from '../requests/lists.js'
+import {createList,getlists,deleteList} from '../requests/lists.js'
+
+import { push } from 'react-router-redux'
 
 class Board extends React.Component{
 
@@ -36,6 +38,7 @@ class Board extends React.Component{
        	//console.log(this.state.board)
 
        	this.createList = this.createList.bind(this)
+       	this.eliminateList = this.eliminateList.bind(this)
 	
 	}
 
@@ -87,9 +90,14 @@ class Board extends React.Component{
 	    })
 	}
 
-	eliminateList(){
+	eliminateList(slug){
 
+		deleteList(slug,this.props.user.jwt).then((response)=>{
 
+			//console.log(response)
+
+			this.loadlists(this.props.match.params.slug)
+		})
 	}
 
 	loadlists(slug){

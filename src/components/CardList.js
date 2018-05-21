@@ -12,6 +12,24 @@ export default class CardList extends React.Component{
 
 			  <div className="aux-card">
 
+			  	  <div className="x">
+				    
+					{/*<IconButton tooltip="Delete" tooltipPosition = "bottom-left"
+								
+								onClick={()=>{this.props.eliminateBoard(this.props.board.slug)}}
+					>
+				      <ActionDelete  />
+				    </IconButton>*/}
+
+				    <span className="x"
+								
+						onClick={()=>{this.props.eliminateList(this.props.list.slug)}}	
+					>x
+				      
+				    </span>
+
+				  </div>
+
 			  	  <CardText >
 
 				    

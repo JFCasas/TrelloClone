@@ -50,6 +50,13 @@ body,html{
 	position: absolute;
 	top: .1em;
 	right: .1em;
+	font-size: 1.2em;
+	color:red;
+}
+
+.x:hover{
+
+	cursor:pointer;
 }
 
 

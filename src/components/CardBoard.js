@@ -19,12 +19,19 @@ export default class CardBoard extends React.Component{
 
 			  	  <div className="x">
 				    
-					<IconButton tooltip="Delete" tooltipPosition = "bottom-left"
+					{/*<IconButton tooltip="Delete" tooltipPosition = "bottom-left"
 								
 								onClick={()=>{this.props.eliminateBoard(this.props.board.slug)}}
 					>
 				      <ActionDelete  />
-				    </IconButton>
+				    </IconButton>*/}
+
+				    <span className="x"
+								
+						onClick={()=>{this.props.eliminateBoard(this.props.board.slug)}}
+					>x
+				      
+				    </span>
 
 				  </div>
 

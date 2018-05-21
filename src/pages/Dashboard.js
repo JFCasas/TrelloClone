@@ -152,11 +152,20 @@ class Dashboard extends React.Component{
 
 	      //console.log(jsonR);
 
-	      this.setState({
+	      /*this.setState({
 
 	        boards : jsonR
 	      
-	      })
+	      })*/
+
+	      if (jsonR) {
+
+				this.setState({
+
+        			boards : jsonR
+      
+      			})
+			}
 
 	    })
 	   
