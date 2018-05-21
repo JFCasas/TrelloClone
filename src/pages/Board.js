@@ -126,6 +126,7 @@ class Board extends React.Component{
 
     			<CardList list = {list} key= {index} 
     					   eliminateList = {this.eliminateList}
+    					   user = {this.props.user}
     			>
     				
 				</CardList>

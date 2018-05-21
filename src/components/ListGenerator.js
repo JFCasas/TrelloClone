@@ -45,9 +45,6 @@ export default class ListGenerator extends React.Component{
 
 				
 				/>
-
-				
-			
 			</Card>
 
 		)
