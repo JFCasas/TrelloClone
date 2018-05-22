@@ -5,18 +5,34 @@ import TextField from 'material-ui/TextField';
 
 export default class ListGenerator extends React.Component{
 
+	constructor(props){
+
+		super(props)
+
+		this.state = {
+
+       		nameList: ""
+       		
+       	}
+	}
+	
+
 	createNewList(){
 
-		const nameList = this.refs.nameListField.getValue()
 		
-		if(nameList){
+
+		const nameList = this.state.nameList
+
+		console.log(nameList)
+		
+		/*if(nameList){
 
 			this.props.createList(nameList)
 		
 		}else{
 
 			alert("Debes de proporcionar un nombre")
-		} 
+		} */
 
 		
 	}
@@ -24,6 +40,8 @@ export default class ListGenerator extends React.Component{
 	onKeyPress1 = (e) => {
         
         if(e.key === 'Enter'){
+            
+            this.setState({nameList: e.target.value})
             this.createNewList()
             
         }
@@ -38,13 +56,20 @@ export default class ListGenerator extends React.Component{
 				  
 			>
 				
-				<TextField 
+				<TextField
+
 					hintText="add a List"
-					ref = 'nameListField'
+					
+					onKeyPress={ (e) => this.onKeyPress1(e) }
+					
+				/>
+
+				<input type="text"  value={this.state.nameList}
+
 					onKeyPress={ (e) => this.onKeyPress1(e) }
 
-				
 				/>
+			
 			</Card>
 
 		)

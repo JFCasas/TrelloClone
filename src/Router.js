@@ -15,6 +15,8 @@ import Login from './pages/Login.js'
 import Signup from './pages/Signup.js'
 import Board from './pages/Board.js'
 
+import Prueba from './pages/Prueba.js'
+
 import { connect } from 'react-redux'
 
 import { ConnectedRouter } from 'react-router-redux'
@@ -42,6 +44,8 @@ class Router extends React.Component {
           <Route path="/signup" component={Signup}></Route>
 
           <Route path="/dashboards/:slug" component={Board}></Route>
+
+          <Route path="/prueba" component={Prueba}></Route>
 
         </App>
         

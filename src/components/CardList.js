@@ -142,10 +142,12 @@ export default class CardList extends React.Component{
 			  	  <CardText >
 
 				    
-				    <p className="cardtext">{this.props.list.name}</p>
+				    <p className="cardtext1">{this.props.list.name}</p>
 				  
 				  
 				  </CardText>
+
+				  
 
 				  <div className = "task-texfield">
 

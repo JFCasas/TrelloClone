@@ -5,6 +5,8 @@ body,html{
 	margin:0;
 	padding: 0;
 	font-family: 'Source Sans Pro', sans-serif;
+	background-color: #F9FBE7;
+
 }
 
 .container{
@@ -45,13 +47,20 @@ body,html{
 	position: relative;
 }
 
+.aux-card-task{
+
+	position: relative;
+	background-color: #F0F4C3;
+	
+}
+
 .x{
 
 	position: absolute;
 	top: .1em;
 	right: .1em;
-	font-size: 1.2em;
-	color:red;
+	font-size: 1.1em;
+	color:#C51162;
 }
 
 .x:hover{
@@ -80,6 +89,28 @@ body,html{
 
 	font-size: 1.5em;
 	font-weight: 800;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+
+}
+
+.cardtext1{
+
+	font-size: 1.2em;
+	font-weight: 800;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+
+}
+
+.cardtext2{
+
+	font-size: 1em;
+	font-weight: 200;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -132,7 +163,7 @@ body,html{
 .listgenerator{
 
 	width: 20vw;
-	min-height:10vh;
+	height:5vh;
 	margin-right: 2em;
 	margin-bottom: 2em;
 	display:flex;
@@ -155,6 +186,7 @@ body,html{
 	width: 18vw;
 	min-height:10vh;
 	margin-bottom: 2em;
+
 }
 
 

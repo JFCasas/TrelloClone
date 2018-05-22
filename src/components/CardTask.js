@@ -10,7 +10,7 @@ export default class CardTask extends React.Component{
 
 			<Card className="task">
 
-			  <div className="aux-card">
+			  <div className="aux-card-task">
 
 			  	  <div className="x">
 				    
@@ -34,7 +34,7 @@ export default class CardTask extends React.Component{
 			  	  <CardText >
 
 				    
-				    <p className="cardtext">{this.props.task.name}</p>
+				    <p className="cardtext2">{this.props.task.name}</p>
 				  
 				  
 				  </CardText>

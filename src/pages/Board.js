@@ -147,7 +147,7 @@ class Board extends React.Component{
 
 				
 
-				<div className="row" style={{"marginTop":"5em"}}>
+				{/*<div className="row" style={{"marginTop":"5em"}}>
 
 					<div className="col-xs-12 col-sm-12 col-md-12">
 
@@ -157,7 +157,9 @@ class Board extends React.Component{
 
 					</div>
 
-				</div>
+				</div>*/}
+
+				<h2> {this.state.board.name} </h2>
 
 				<div className="row" style={{"marginTop":"2em"}}>
 
