@@ -42,7 +42,7 @@ export default class CardList extends React.Component{
 
     	createTask(data,this.props.user.jwt).then((response)=>{
 
-	      	console.log(response)
+	      	//console.log(response)
 
 	      	//console.log(slug)
 			
@@ -58,9 +58,9 @@ export default class CardList extends React.Component{
 
 	loadTasks(){
 
-    	getTasks(this.props.user.jwt).then((jsonR)=>{
+    	getTasks(this.props.user.jwt,this.props.list.slug).then((jsonR)=>{
 
-	      console.log(jsonR);
+	      //console.log(jsonR);
 
 	      this.setState({
 
@@ -78,10 +78,7 @@ export default class CardList extends React.Component{
 
     		return(
 
-    			
-
     			<CardTask task = {task} key= {index} 
-    					   
     			>
     				
 				</CardTask>
@@ -140,7 +137,7 @@ export default class CardList extends React.Component{
 
 				  <div className = "task-texfield">
 
-				  	<TextField 
+				  	<TextField style={{"marginBottom":"2em"}}
 					hintText="add a Task"
 					ref = 'nameTaskField'
 					onKeyPress={ (e) => this.onKeyPress1(e) }

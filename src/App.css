@@ -59,7 +59,6 @@ body,html{
 	cursor:pointer;
 }
 
-
 .cardgenerator{
 
 	width: 20vw;
@@ -87,7 +86,6 @@ body,html{
 
 
 }
-
 
 
 .formulario{
@@ -154,11 +152,9 @@ body,html{
 
 .task{
 
-	width: 20vw;
+	width: 18vw;
 	min-height:10vh;
-	margin-right: 2em;
 	margin-bottom: 2em;
-
 }
 
 
