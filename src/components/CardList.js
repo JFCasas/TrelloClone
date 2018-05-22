@@ -3,7 +3,7 @@ import React from 'react'
 import {Card, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 
-import {createTask,getTasks} from '../requests/tasks.js'
+import {createTask,getTasks,deleteTask} from '../requests/tasks.js'
 
 import CardTask from './CardTask.js'
 
@@ -23,6 +23,7 @@ export default class CardList extends React.Component{
 
        	
 		this.createNewTask = this.createNewTask.bind(this)
+		this.eliminateTask = this.eliminateTask.bind(this)
 	}
 	
 
@@ -56,6 +57,16 @@ export default class CardList extends React.Component{
 
 	}
 
+	eliminateTask(slug){
+
+		deleteTask(slug,this.props.user.jwt).then((response)=>{
+
+			//console.log(response)
+
+			this.loadTasks()
+		})
+	}
+
 	loadTasks(){
 
     	getTasks(this.props.user.jwt,this.props.list.slug).then((jsonR)=>{
@@ -79,6 +90,7 @@ export default class CardList extends React.Component{
     		return(
 
     			<CardTask task = {task} key= {index} 
+    					  eliminateTask = {this.eliminateTask}
     			>
     				
 				</CardTask>

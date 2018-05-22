@@ -22,7 +22,8 @@ export default class CardTask extends React.Component{
 				    </IconButton>*/}
 
 				    <span className="x"
-								
+						
+						onClick={()=>{this.props.eliminateTask(this.props.task.slug)}}								
 						
 					>x
 				      
