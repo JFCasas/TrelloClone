@@ -81,7 +81,9 @@ class Board extends React.Component{
 
 	      	//console.log(slug)
 			
-			this.loadlists(slug)
+			//this.loadlists(slug)
+			this.props.dispatch(push('/'))
+			this.props.dispatch(push('/dashboards/' + slug))
 
 			
 	    }).catch((error)=>{
@@ -124,9 +126,11 @@ class Board extends React.Component{
 
     			
 
-    			<CardList list = {list} key= {index} 
+    			<CardList  list = {list} key= {index} 
     					   eliminateList = {this.eliminateList}
     					   user = {this.props.user}
+    					   dispatch = {this.props.dispatch}
+    					   slugboard = {this.props.match.params.slug}
     			>
     				
 				</CardList>

@@ -7,12 +7,15 @@ import {createTask,getTasks,deleteTask} from '../requests/tasks.js'
 
 import CardTask from './CardTask.js'
 
+import { push } from 'react-router-redux'
+
 export default class CardList extends React.Component{
 
 	constructor(props){
 
 		super(props)
 		//console.log(props.user.jwt)
+		//console.log(props.slugboard)
 		this.state = {
 
        		tasks: []
@@ -31,7 +34,7 @@ export default class CardList extends React.Component{
 
 		const data = {
 
-      		name : this.refs.nameTaskField.getValue(),
+      		name : this.nameTaskField.getValue(),
       		_dashboard : this.props.list._dashboard,
       		_list : this.props.list._id
       		
@@ -48,6 +51,11 @@ export default class CardList extends React.Component{
 	      	//console.log(slug)
 			
 			this.loadTasks()
+
+			this.props.dispatch(push('/'))
+			let slugboard = this.props.slugboard
+
+			this.props.dispatch(push('/dashboards/' + slugboard))
 
 			
 	    }).catch((error)=>{
@@ -153,8 +161,10 @@ export default class CardList extends React.Component{
 
 				  	<TextField style={{"marginBottom":"2em"}}
 					hintText="add a Task"
-					ref = 'nameTaskField'
+					
 					onKeyPress={ (e) => this.onKeyPress1(e) }
+
+					ref= {el => this.nameTaskField = el}
 
 					/>
 				  	

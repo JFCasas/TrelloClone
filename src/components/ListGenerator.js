@@ -9,39 +9,35 @@ export default class ListGenerator extends React.Component{
 
 		super(props)
 
-		this.state = {
-
-       		nameList: ""
-       		
-       	}
+		
 	}
 	
 
 	createNewList(){
 
 		
-
-		const nameList = this.state.nameList
-
-		console.log(nameList)
 		
-		/*if(nameList){
+		const nameList = this.inputEntry.getValue()
+
+		//console.log(nameList)
+		
+		if(nameList){
 
 			this.props.createList(nameList)
 		
 		}else{
 
 			alert("Debes de proporcionar un nombre")
-		} */
+		} 
 
-		
+
 	}
 
 	onKeyPress1 = (e) => {
         
         if(e.key === 'Enter'){
             
-            this.setState({nameList: e.target.value})
+            
             this.createNewList()
             
         }
@@ -61,14 +57,12 @@ export default class ListGenerator extends React.Component{
 					hintText="add a List"
 					
 					onKeyPress={ (e) => this.onKeyPress1(e) }
+
+					ref= {el => this.inputEntry = el}
 					
 				/>
 
-				<input type="text"  value={this.state.nameList}
-
-					onKeyPress={ (e) => this.onKeyPress1(e) }
-
-				/>
+				
 			
 			</Card>
 
