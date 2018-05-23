@@ -4,13 +4,15 @@ import FullCardGenerator from '../components/FullCardGenerator'
 import PartialCardGenerator from '../components/PartialCardGenerator'
 import CardBoard from '../components/CardBoard'
 
-import {getDashboards,createDashboard,deleteDashboard} from '../requests/dashboards.js'
+//import {getDashboards,createDashboard,deleteDashboard} from '../requests/dashboards.js'
 
 import { connect } from 'react-redux'
 
 import { push } from 'react-router-redux'
 
 import { Link } from 'react-router-dom'
+
+import * as actions from '../actions/boardsActions'
 
 class Dashboard extends React.Component{
 
@@ -21,7 +23,7 @@ class Dashboard extends React.Component{
 		this.state = {
 
 			fullCardGenerator : false,
-			boards : []
+			//boards : []
 		}
 
 		this.loadboards()
@@ -83,7 +85,7 @@ class Dashboard extends React.Component{
       	})*/
 
       	
-		createDashboard(data,this.props.user.jwt).then((response)=>{
+		/*createDashboard(data,this.props.user.jwt).then((response)=>{
 
 	      
 			this.loadboards()
@@ -98,37 +100,39 @@ class Dashboard extends React.Component{
 	    }).catch((error)=>{
 
 	      console.log(error)
-	    })
+	    })*/
+
+	    this.props.dispatch(actions.addDasboard(data))
+
+	    this.setState({
+
+        	fullCardGenerator: false
+      
+      	})
 	}
 
 	eliminateBoard(slug){
 
 		
 
-		deleteDashboard(slug,this.props.user.jwt).then((response)=>{
+		/*deleteDashboard(slug,this.props.user.jwt).then((response)=>{
 
 	      	this.props.dispatch(push('/'))
 
-	      	//this.loadboards()
-
-			/*this.setState({
-
-        		fullCardGenerator: false
-      
-      		})*/
-	      
-
+	      	
 	    }).catch((error)=>{
 
 	      console.log(error)
 	    
-	    })
+	    })*/
+
+	    this.props.dispatch(actions.deleteDasboard(slug))
 	}
 
 
     boards(){
 
-    	return this.state.boards.map((board,index)=>{
+    	return this.props.boards.map((board,index)=>{
 
     		return(
 
@@ -148,17 +152,11 @@ class Dashboard extends React.Component{
 
     loadboards(){
 
-    	getDashboards(this.props.user.jwt).then((jsonR)=>{
+    	/*getDashboards(this.props.user.jwt).then((jsonR)=>{
 
 	      //console.log(jsonR);
 
-	      /*this.setState({
-
-	        boards : jsonR
-	      
-	      })*/
-
-	      if (jsonR) {
+	      	if (jsonR) {
 
 				this.setState({
 
@@ -167,7 +165,9 @@ class Dashboard extends React.Component{
       			})
 			}
 
-	    })
+	    })*/
+
+	    this.props.dispatch(actions.loadAll())
 	   
     }
 
@@ -208,7 +208,8 @@ function mapStateToProps(state,ownProps){
 
 	return {
 
-		user: state.user
+		user: state.user,
+		boards: state.boards
 	}
 
 }

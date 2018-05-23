@@ -18,6 +18,8 @@ import {createList,getlists,deleteList} from '../requests/lists.js'
 
 import { push } from 'react-router-redux'
 
+import * as actionsBoard from '../actions/boardActions'
+
 class Board extends React.Component{
 
 	constructor(props){
@@ -39,12 +41,14 @@ class Board extends React.Component{
 
        	this.createList = this.createList.bind(this)
        	this.eliminateList = this.eliminateList.bind(this)
+
+       	//console.log(props.board)
 	
 	}
 
 	loadBoard(slug){
 
-		getBoard(slug,this.props.user.jwt).then((jsonR)=>{
+		/*getBoard(slug,this.props.user.jwt).then((jsonR)=>{
 
 			//console.log(jsonR)
 
@@ -57,7 +61,9 @@ class Board extends React.Component{
       			})
 			}
 
-		})
+		})*/
+
+		this.props.dispatch(actionsBoard.getDasboard(slug))
 
 	}
 
@@ -67,7 +73,7 @@ class Board extends React.Component{
     	const data = {
 
       		name : nameList,
-      		_dashboard : this.state.board._id
+      		_dashboard : this.props.board._id
       		
     	}
 
@@ -108,11 +114,18 @@ class Board extends React.Component{
 
 	      //console.log(jsonR);
 
-	      this.setState({
+	      if (jsonR){
 
-	        lists : jsonR
+	      	this.setState({
+
+	        	lists : jsonR
 	      
-	      })
+	      	})
+
+
+	      }
+
+	      
 
 	    })
 	   
@@ -163,7 +176,7 @@ class Board extends React.Component{
 
 				</div>*/}
 
-				<h2> {this.state.board.name} </h2>
+				<h2> {this.props.board.name} </h2>
 
 				<div className="row" style={{"marginTop":"2em"}}>
 
@@ -196,7 +209,8 @@ function mapStateToProps(state,ownProps){
 
 	return {
 
-		user: state.user
+		user: state.user,
+		board: state.board
 	}
 }
 

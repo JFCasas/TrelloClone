@@ -21,7 +21,7 @@ export default class ListGenerator extends React.Component{
 
 		//console.log(nameList)
 		
-		if(nameList){
+		if(nameList !== ""){
 
 			this.props.createList(nameList)
 		

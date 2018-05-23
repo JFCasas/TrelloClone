@@ -6,6 +6,8 @@ import MyAppBar from './MyAppBar'
 
 import * as actions from '../../actions/userActions'
 
+import { push } from 'react-router-redux'
+
 
 class MyAppBarContainer extends React.Component{
 
@@ -22,7 +24,7 @@ class MyAppBarContainer extends React.Component{
 
 	  this.props.dispatch(actions.logout())
 
-	  //this.props.dispatch(push('/'))
+	  this.props.dispatch(push('/'))
 	}
 
 	render(){
