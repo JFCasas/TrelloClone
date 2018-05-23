@@ -14,10 +14,17 @@ export function getDasboard(slug){
 
 		if (!user) return null
 
+		
 		requests.getBoard(slug,user.jwt).then((result)=>{
 
-			console.log(result)
-			dispatch(getBoardSuccess(result))
+			//console.log(result)
+			
+			if(result !== null){
+
+				dispatch(getBoardSuccess(result))
+
+			}
+			
 		})
 	}
 }

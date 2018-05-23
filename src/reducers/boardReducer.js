@@ -4,6 +4,8 @@ export default function boardReducer(state = {} , action ){
 		
 		case 'GET_BOARD':
 
+			
+
 			return Object.assign({},state,{
 
       			name: action.board.name,
