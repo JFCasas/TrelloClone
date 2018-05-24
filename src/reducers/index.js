@@ -4,4 +4,6 @@ import boards from './boardsReducer'
 
 import board from './boardReducer'
 
-export default {user:user,boards:boards,board:board}
+import lists from './listsReducer'
+
+export default {user:user,boards:boards,board:board,lists:lists}
