@@ -49,10 +49,10 @@ export function addDasboard(data){
 
 
 
-/*export function addBoardSuccess(board){
+export function deleteBoardSuccess(board){
 
-	return {type: 'ADD_BOARD' , board}
-}*/
+	return {type: 'DELETE_BOARD' , board}
+}
 
 
 export function deleteDasboard(slug){
@@ -65,10 +65,7 @@ export function deleteDasboard(slug){
 
 		requests.deleteDashboard(slug,user.jwt).then((result)=>{
 
-			//console.log(result)
-
-			//dispatch(loadAll())
-			dispatch(push('/'))
+			dispatch(deleteBoardSuccess(result))
 		})
 	}
 }

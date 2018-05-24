@@ -16,6 +16,7 @@ import Signup from './pages/Signup.js'
 import Board from './pages/Board.js'
 
 import BoardContainer from './containers/BoardContainer'
+import DashboardContainer from './containers/DashboardContainer'
 
 import Prueba from './pages/Prueba.js'
 
@@ -29,7 +30,7 @@ class Router extends React.Component {
 
   home(){
 
-    if (this.props.user.jwt) return Dashboard
+    if (this.props.user.jwt) return DashboardContainer
     return Home
   }
 

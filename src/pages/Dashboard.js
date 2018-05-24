@@ -4,17 +4,10 @@ import FullCardGenerator from '../components/FullCardGenerator'
 import PartialCardGenerator from '../components/PartialCardGenerator'
 import CardBoard from '../components/CardBoard'
 
-//import {getDashboards,createDashboard,deleteDashboard} from '../requests/dashboards.js'
-
-import { connect } from 'react-redux'
-
-import { push } from 'react-router-redux'
-
 import { Link } from 'react-router-dom'
 
-import * as actions from '../actions/boardsActions'
 
-class Dashboard extends React.Component{
+export default class Dashboard extends React.Component{
 
 	constructor(props){
 
@@ -23,17 +16,15 @@ class Dashboard extends React.Component{
 		this.state = {
 
 			fullCardGenerator : false,
-			//boards : []
+			
 		}
 
-		this.loadboards()
+		
 
 		this.choiceCardGenerator = this.choiceCardGenerator.bind(this)
-
 		this.showCreateNewBoard = this.showCreateNewBoard.bind(this)
 		this.cancelCreateNewBoard = this.cancelCreateNewBoard.bind(this)
-		this.createNewBoard = this.createNewBoard.bind(this)
-		this.eliminateBoard = this.eliminateBoard.bind(this)
+		
 	}
 
 	choiceCardGenerator(){
@@ -42,7 +33,7 @@ class Dashboard extends React.Component{
 
 			return <FullCardGenerator 
 						cancelCreateNewBoard={this.cancelCreateNewBoard}
-						createNewBoard={this.createNewBoard}>
+						createNewBoard={this.props.createNewBoard}>
 					
 				   </FullCardGenerator>
 		}
@@ -69,67 +60,6 @@ class Dashboard extends React.Component{
 
     }
 
-    createNewBoard(nameBoard){
-
-
-    	const data = {
-
-      		name : nameBoard
-      		
-    	}
-
-		/*this.setState({
-
-    		boards: this.state.boards.concat(newBoard),
-      		fullCardGenerator: false
-      	})*/
-
-      	
-		/*createDashboard(data,this.props.user.jwt).then((response)=>{
-
-	      
-			this.loadboards()
-
-			this.setState({
-
-        		fullCardGenerator: false
-      
-      		})
-	      
-
-	    }).catch((error)=>{
-
-	      console.log(error)
-	    })*/
-
-	    this.props.dispatch(actions.addDasboard(data))
-
-	    this.setState({
-
-        	fullCardGenerator: false
-      
-      	})
-	}
-
-	eliminateBoard(slug){
-
-		
-
-		/*deleteDashboard(slug,this.props.user.jwt).then((response)=>{
-
-	      	this.props.dispatch(push('/'))
-
-	      	
-	    }).catch((error)=>{
-
-	      console.log(error)
-	    
-	    })*/
-
-	    this.props.dispatch(actions.deleteDasboard(slug))
-	}
-
-
     boards(){
 
     	return this.props.boards.map((board,index)=>{
@@ -139,7 +69,7 @@ class Dashboard extends React.Component{
     			<Link to = {"/dashboards/" + board.slug} style={{"textDecoration": "none"}}>
 
     					<CardBoard board = {board} key= {index} 
-    					   eliminateBoard = {this.eliminateBoard}
+    					   eliminateBoard = {this.props.eliminateBoard}
     					>
     				
 						</CardBoard>
@@ -150,26 +80,11 @@ class Dashboard extends React.Component{
     	})
     }
 
-    loadboards(){
 
-    	/*getDashboards(this.props.user.jwt).then((jsonR)=>{
 
-	      //console.log(jsonR);
+    
 
-	      	if (jsonR) {
 
-				this.setState({
-
-        			boards : jsonR
-      
-      			})
-			}
-
-	    })*/
-
-	    this.props.dispatch(actions.loadAll())
-	   
-    }
 
 	render(){
 
@@ -178,7 +93,6 @@ class Dashboard extends React.Component{
 			<div className="container" >
 
 				
-
 				<div className="row" style={{"marginTop":"5em"}}>
 
 					<div className="col-xs-12 col-sm-12 col-md-12">
@@ -189,8 +103,6 @@ class Dashboard extends React.Component{
 							{this.boards()}
 
 							
-
-
 						</div>
 
 					</div>
@@ -199,21 +111,10 @@ class Dashboard extends React.Component{
 			
 			</div>
 
-
 		)
 	}
 }
 
-function mapStateToProps(state,ownProps){
 
-	return {
-
-		user: state.user,
-		boards: state.boards
-	}
-
-}
-
-export default connect(mapStateToProps)(Dashboard)
 
 
