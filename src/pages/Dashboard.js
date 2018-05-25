@@ -1,7 +1,5 @@
 import React from 'react'
 
-import FullCardGenerator from '../components/FullCardGenerator'
-import PartialCardGenerator from '../components/PartialCardGenerator'
 import CardBoard from '../components/CardBoard'
 
 import { Link } from 'react-router-dom'
@@ -9,58 +7,7 @@ import { Link } from 'react-router-dom'
 
 export default class Dashboard extends React.Component{
 
-	constructor(props){
-
-		super(props)
-
-		this.state = {
-
-			fullCardGenerator : false,
-			
-		}
-
-		
-
-		this.choiceCardGenerator = this.choiceCardGenerator.bind(this)
-		this.showCreateNewBoard = this.showCreateNewBoard.bind(this)
-		this.cancelCreateNewBoard = this.cancelCreateNewBoard.bind(this)
-		
-	}
-
-	choiceCardGenerator(){
-
-		if (this.state.fullCardGenerator ) {
-
-			return <FullCardGenerator 
-						cancelCreateNewBoard={this.cancelCreateNewBoard}
-						createNewBoard={this.props.createNewBoard}>
-					
-				   </FullCardGenerator>
-		}
-		return <PartialCardGenerator showCreateNewBoard={this.showCreateNewBoard}></PartialCardGenerator>
-	}
-
-	showCreateNewBoard(){
-
-		this.setState({
-
-        	fullCardGenerator: true
-      
-      	})
-
-    }
-
-	cancelCreateNewBoard(){
-
-		this.setState({
-
-        	fullCardGenerator: false
-      
-      	})
-
-    }
-
-    boards(){
+	boards(){
 
     	return this.props.boards.map((board,index)=>{
 
@@ -81,11 +28,6 @@ export default class Dashboard extends React.Component{
     }
 
 
-
-    
-
-
-
 	render(){
 
 		return(
@@ -99,7 +41,7 @@ export default class Dashboard extends React.Component{
 
 						<div className="dashboard">
 
-							{this.choiceCardGenerator()}
+							{this.props.choiceCardGenerator()}
 							{this.boards()}
 
 							

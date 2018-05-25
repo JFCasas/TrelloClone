@@ -66,6 +66,8 @@ export function deleteDasboard(slug){
 		requests.deleteDashboard(slug,user.jwt).then((result)=>{
 
 			dispatch(deleteBoardSuccess(result))
+
+			//console.log(result)
 		})
 	}
 }

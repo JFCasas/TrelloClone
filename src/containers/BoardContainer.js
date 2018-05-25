@@ -27,6 +27,8 @@ class BoardContainer extends React.Component{
 	
 	}
 
+	
+
 	loadBoard(slug){
 
 		this.props.dispatch(actionsBoard.getDasboard(slug))
