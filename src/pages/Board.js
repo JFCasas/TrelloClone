@@ -45,10 +45,14 @@ export default class Board extends React.Component{
 						>
 						</ListGenerator>
 
-						{this.lists()}
+						<div className="dashboard">
+
+							{this.lists()}
+
+							
+						</div>
 
 						
-
 					</div>
 
 				 </div>
