@@ -1,19 +1,14 @@
 import React from 'react'
 
-import {
-
-  BrowserRouter as ReactRouter,
-  Route
-
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import App from './App'
 
-import Dashboard from './pages/Dashboard.js'
+
 import Home from './pages/Home.js'
 import Login from './pages/Login.js'
 import Signup from './pages/Signup.js'
-import Board from './pages/Board.js'
+
 
 import BoardContainer from './containers/BoardContainer'
 import DashboardContainer from './containers/DashboardContainer'

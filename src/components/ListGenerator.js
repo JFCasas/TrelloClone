@@ -5,12 +5,7 @@ import TextField from 'material-ui/TextField';
 
 export default class ListGenerator extends React.Component{
 
-	constructor(props){
-
-		super(props)
-
-		
-	}
+	
 	
 
 	createNewList(){

@@ -1,7 +1,5 @@
 import * as requests from '../requests/lists'
 
-import { push } from 'react-router-redux'
-
 export function loadLists(lists){
 
 	return { type: 'LOAD_LISTS', lists:lists}

@@ -1,9 +1,9 @@
 import React from 'react'
 
 import {Card, CardText} from 'material-ui/Card';
-import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
-import ActionDelete from 'material-ui/svg-icons/action/delete';
+//import IconButton from 'material-ui/IconButton';
+//import FontIcon from 'material-ui/FontIcon';
+//import ActionDelete from 'material-ui/svg-icons/action/delete';
 
 import { Link } from 'react-router-dom'
 

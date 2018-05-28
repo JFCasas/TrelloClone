@@ -31,7 +31,7 @@ export default class CardList extends React.Component{
 
     	let tasksByList = this.props.tasks.filter((element)=>{
 
-    		return element._list == this.props.list._id
+    		return element._list === this.props.list._id
     	})
 
     	//console.log(tasksByList)

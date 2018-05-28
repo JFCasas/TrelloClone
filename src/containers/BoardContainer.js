@@ -49,7 +49,7 @@ class BoardContainer extends React.Component{
       		
     	}
 
-    	const slug = this.props.match.params.slug
+    	
 
     	this.props.dispatch(actions.addList(data))
 	}

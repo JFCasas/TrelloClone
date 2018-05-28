@@ -1,15 +1,6 @@
 import React from 'react'
 
-import {Card, CardText} from 'material-ui/Card';
-import TextField from 'material-ui/TextField';
-
-import {createTask,getTasks,deleteTask} from '../requests/tasks.js'
-
-
-
 import CardList from '../components/CardList'
-
-import { push } from 'react-router-redux'
 
 import { connect } from 'react-redux'
 

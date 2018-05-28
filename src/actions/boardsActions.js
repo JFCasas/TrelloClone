@@ -1,7 +1,5 @@
 import * as requests from '../requests/dashboards'
 
-import { push } from 'react-router-redux'
-
 export function loadBoards(boards){
 
 	return { type: 'LOAD_BOARDS', boards:boards}
