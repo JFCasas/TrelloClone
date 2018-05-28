@@ -49,7 +49,7 @@ function createTask(data,jwt){
 
 function getTasks(jwt,slug){
 
-  return fetch("http://127.0.0.1:3001/lists/" + slug + "/tasks", {
+  return fetch("http://127.0.0.1:3001/dashboards/" + slug + "/tasks", {
 
 		method: 'GET',
 		

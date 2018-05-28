@@ -2,7 +2,7 @@ import React from 'react'
 
 import ListGenerator from '../components/ListGenerator'
 
-import CardList from '../components/CardList'
+import CardListContainer from '../containers/CardListContainer'
 
 
 export default class Board extends React.Component{
@@ -13,14 +13,14 @@ export default class Board extends React.Component{
 
     		return(
 
-    			<CardList  list = {list} key= {index} 
+    			<CardListContainer  
+
+    					   list = {list} key= {index} 
     					   eliminateList = {this.props.eliminateList}
-    					   user = {this.props.user}
-    					   dispatch = {this.props.dispatch}
     					   slugboard = {this.props.slugboard}
     			>
     				
-				</CardList>
+				</CardListContainer>
 				
 			)
     	})   		
@@ -40,7 +40,8 @@ export default class Board extends React.Component{
 					<div className="col-xs-12 col-sm-12 col-md-12">
 
 						<ListGenerator
-								createList={this.props.createList}>
+								
+							createList={this.props.createList}>
 						>
 						</ListGenerator>
 
@@ -51,9 +52,6 @@ export default class Board extends React.Component{
 					</div>
 
 				 </div>
-
-
-
 
 
 			</div>

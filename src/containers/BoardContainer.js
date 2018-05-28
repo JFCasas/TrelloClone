@@ -10,6 +10,8 @@ import * as actionsBoard from '../actions/boardActions'
 
 import * as actions from '../actions/listsActions'
 
+import * as actionsTasks from '../actions/tasksActions'
+
 class BoardContainer extends React.Component{
 
 	constructor(props){
@@ -20,6 +22,8 @@ class BoardContainer extends React.Component{
 		this.loadBoard(slug)
 
 		this.loadlists(slug)
+
+		this.loadAllTasks(slug)
 
 		this.createList = this.createList.bind(this)
 		this.eliminateList = this.eliminateList.bind(this)
@@ -56,7 +60,7 @@ class BoardContainer extends React.Component{
 	   
     }
 
-    eliminateList(slug){
+	eliminateList(slug){
 
     	//console.log(slug)
 
@@ -72,7 +76,25 @@ class BoardContainer extends React.Component{
 		
 	}
 
-    
+	loadAllTasks(slug){
+
+    	/*getTasks(this.props.user.jwt,this.props.list.slug).then((jsonR)=>{
+
+	      //console.log(jsonR);
+
+	      this.setState({
+
+	        tasks : jsonR
+	      
+	      })
+
+	    })*/
+
+	    
+		this.props.dispatch(actionsTasks.loadAll(slug))
+	}
+
+
 
 
 	render(){
@@ -105,7 +127,8 @@ function mapStateToProps(state,ownProps){
 
 		user: state.user,
 		board: state.board,
-		lists: state.lists
+		lists: state.lists,
+		tasks: state.tasks
 	}
 }
 
