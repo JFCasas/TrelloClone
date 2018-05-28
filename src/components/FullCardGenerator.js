@@ -28,6 +28,21 @@ export default class FullCardGenerator extends React.Component{
 		
 	}
 
+	onKeyPress1 = (e) => {
+
+		let nameBoard = this.refs.nameBoardField.getValue()
+
+		//console.log(nameTaskField)
+        
+        if(e.key === 'Enter'){
+
+        	this.props.createNewBoard(nameBoard)
+            
+        }
+
+        
+    }
+
 	render(){
 
 		return(
@@ -45,6 +60,8 @@ export default class FullCardGenerator extends React.Component{
 			  <TextField 
 				hintText="What shall we call the board"
 				ref = 'nameBoardField'
+
+				onKeyPress={ (e) => this.onKeyPress1(e) }
 			  />
 
 			  <CardActions >
