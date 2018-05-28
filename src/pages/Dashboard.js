@@ -13,15 +13,15 @@ export default class Dashboard extends React.Component{
 
     		return(
 
-    			<Link to = {"/dashboards/" + board.slug} style={{"textDecoration": "none"}}>
+    			
 
-    					<CardBoard board = {board} key= {index} 
+    			<CardBoard board = {board} key= {index} 
     					   eliminateBoard = {this.props.eliminateBoard}
-    					>
+    			>
     				
-						</CardBoard>
+				</CardBoard>
 				
-				</Link>
+				
 
     		)
     	})

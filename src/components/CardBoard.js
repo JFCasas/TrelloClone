@@ -5,7 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 import ActionDelete from 'material-ui/svg-icons/action/delete';
 
-
+import { Link } from 'react-router-dom'
 
 export default class CardBoard extends React.Component{
 
@@ -28,22 +28,25 @@ export default class CardBoard extends React.Component{
 
 				    <span className="x"
 								
-						onClick={()=>{this.props.eliminateBoard(this.props.board.slug)}}
+						onClick={(e)=>{this.props.eliminateBoard(this.props.board.slug)}}
 					>x
 				      
 				    </span>
 
 				  </div>
 
-			  	  
-				  <CardText >
+			  	  <Link to = {"/dashboards/" + this.props.board.slug} style={{"textDecoration": "none"}}>
+				  	
+				  	<CardText >
 
 				    
-				    <p className="cardtext">{this.props.board.name}</p>
+				    	<p className="cardtext">{this.props.board.name}</p>
 				  
 				  
-				  </CardText>
-
+				  	
+				  	</CardText>
+				  
+				  </Link>
 				  
 			  </div>
 			  

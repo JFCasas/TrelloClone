@@ -13,8 +13,8 @@ export default function boardsReducer(state = [] , action ){
 
 		case 'DELETE_BOARD':
 
-			console.log(state)
-			console.log(action.board)
+			//console.log(state)
+			//console.log(action.board)
 			return state.filter( (document) => {return document._id !== action.board._id})
 
 		default: 
