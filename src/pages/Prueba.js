@@ -1,42 +1,92 @@
 import React from 'react'
 
+import TextField from 'material-ui/TextField';
+
+import RaisedButton from 'material-ui/RaisedButton';
+
 export default class Prueba extends React.Component {
+
+  constructor(props){
+
+    super(props)
+
+    this.state = {
+
+      searchText: ''
+    }
+
+    this.reset = this.reset.bind(this)
+  }
   
-  constructor(props) {
-    super(props);
 
-    this.textInput = null;
-
-    this.setTextInputRef = element => {
-      this.textInput = element;
-    };
-
-    this.focusTextInput = () => {
-      // Focus the text input using the raw DOM API
-      if (this.textInput) this.textInput.focus();
-    };
+  reset() {
+    
+    this.inputEntry.value = ""
+  
   }
 
-  componentDidMount() {
-    // autofocus the input on mount
-    this.focusTextInput();
+  
+
+    
+  onKeyPress1 = (e) => {
+    
+    if(e.key === 'Enter'){
+
+      this.setState({
+
+        searchText: e.target.value
+      
+      })
+
+      //this.reset()
+        
+    }
   }
 
-  render() {
-    // Use the `ref` callback to store a reference to the text input DOM
-    // element in an instance field (for example, this.textInput).
-    return (
-      <div>
-        <input
+
+
+  render(){
+
+    
+
+    return(
+
+      <div style={{"marginTop":"5em","marginLeft":"5em"}}>
+
+        <input 
+
           type="text"
-          ref={this.setTextInputRef}
+
+          className = "inputt"
+          
+          onKeyPress={ (e) => this.onKeyPress1(e) }
+
+          ref= {el => this.inputEntry = el}
+
+          
         />
-        <input
-          type="button"
-          value="Focus the text input"
-          onClick={this.focusTextInput}
-        />
+
+        <p>{this.state.searchText}</p>
+
+        <RaisedButton
+
+          label="Reset Input" secondary={true}
+
+          onClick = {this.reset}
+
+        ></RaisedButton>
+        
+
       </div>
-    );
+
+
+      
+
+
+    )
   }
+  
+  
 }
+
+

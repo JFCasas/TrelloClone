@@ -190,3 +190,31 @@ body,html{
 }
 
 
+
+.inputt{
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2em;
+  display: block;
+  width: 100%;
+  border:none;
+  outline: none;
+  border-bottom: solid 1px #ccc;
+  background-color: transparent;
+  color: #000;
+}
+
+.inputt-task{
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2em;
+  display: block;
+  width: 80%;
+  border:none;
+  outline: none;
+  border-bottom: solid 1px #ccc;
+  background-color: transparent;
+  color: #000;
+}
+
+

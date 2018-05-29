@@ -10,14 +10,14 @@ export default class CardList extends React.Component{
 	
 	onKeyPress1 = (e) => {
 
-		let nameTaskField = this.nameTaskField.getValue()
+		let nameTaskField = this.nameTaskField.value
 
 		//console.log(nameTaskField)
         
         if(e.key === 'Enter'){
 
         	this.props.createNewTask(nameTaskField)
-            
+            this.nameTaskField.value = ""
         }
     }
 
@@ -81,12 +81,15 @@ export default class CardList extends React.Component{
 
 				  <div className = "task-texfield">
 
-				  	<TextField style={{"marginBottom":"2em"}}
-						hintText="add a Task"
+				  	<input style={{"marginBottom":"2em"}}
+						
+						placeholder = "add a Task"
 					
 						onKeyPress={ (e) => this.onKeyPress1(e) }
 
 						ref= {el => this.nameTaskField = el}
+
+						className = "inputt-task"
 
 					/>
 
