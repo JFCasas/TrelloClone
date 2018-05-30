@@ -42,6 +42,7 @@ export default class CardList extends React.Component{
 
     			<CardTask task = {task} key= {index} 
     					  eliminateTask = {this.props.eliminateTask}
+    					  onDragStart = {this.props.onDragStart}
     			>
     				
 				</CardTask>
@@ -54,7 +55,12 @@ export default class CardList extends React.Component{
 
 		return(
 
-			<Card className="list">
+			<Card className="list"
+
+				  onDragOver={(e)=>this.props.onDragOver(e)}  
+				  onDrop={(e)=>{this.props.onDrop(e)}}
+
+			>
 
 			  <div className="aux-card">
 

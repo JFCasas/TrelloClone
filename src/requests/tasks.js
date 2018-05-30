@@ -96,4 +96,28 @@ function deleteTask(slug,jwt){
 	})
 }
 
-export {createTask,getTasks,deleteTask}
+function changeTaskList(data,slug,jwt){
+
+	return fetch("http://127.0.0.1:3001/tasks/" + slug, {
+
+		method: 'PUT',
+		body: JSON.stringify(data),
+		headers:{
+			'Content-Type': 'application/json',
+			'Authorization' : 'Bearer ' + jwt,
+			'Accept': 'application/json'
+		}
+	
+	}).then((response)=>{
+
+		return response.json()
+	
+	}).catch((error)=>{
+
+		console.log(error)
+	})
+
+
+}
+
+export {createTask,getTasks,deleteTask,changeTaskList}

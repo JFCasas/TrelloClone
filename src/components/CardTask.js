@@ -4,11 +4,19 @@ import {Card, CardText} from 'material-ui/Card';
 
 export default class CardTask extends React.Component{
 
+	
+
 	render(){
 
 		return(
 
-			<Card className="task">
+			<Card className="task" 
+
+				  draggable
+
+				  onDragStart={(e)=>this.props.onDragStart(e,this.props.task.slug)}
+
+			>
 
 			  <div className="aux-card-task">
 

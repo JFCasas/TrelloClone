@@ -68,3 +68,27 @@ export function deleteTask(slug){
 }
 
 
+export function changeTaskListSuccess(task){
+
+	return {type: 'CHANGE_TASK_LIST' , task}
+}
+
+
+export function changeTaskList(data,slugTask){
+
+	return (dispatch,getState) =>{
+
+		let user = getState().user
+
+		if (!user) return null
+
+		requests.changeTaskList(data,slugTask,user.jwt).then((result)=>{
+
+			console.log(result)
+
+			//dispatch(deleteTaskSuccess(result))
+		})
+	}
+}
+
+

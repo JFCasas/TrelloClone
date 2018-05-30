@@ -14,7 +14,9 @@ class CardListContainer extends React.Component{
 
 		this.createNewTask = this.createNewTask.bind(this)
 		this.eliminateTask = this.eliminateTask.bind(this)
-		
+		this.onDragStart = this.onDragStart.bind(this)
+		this.onDragOver = this.onDragOver.bind(this)
+		this.onDrop = this.onDrop.bind(this)
 	}
 	
 
@@ -43,6 +45,38 @@ class CardListContainer extends React.Component{
 
 	}
 
+	onDragStart(e,slug){
+
+		e.dataTransfer.setData("slug",slug)
+
+	}
+
+	onDragOver(e){
+
+		e.preventDefault()
+
+	}
+
+	onDrop(e){
+
+		//const idList = this.props.list._id
+
+		const data = {
+
+      		_list : this.props.list._id
+      		
+    	}
+
+		const slugTask = e.dataTransfer.getData("slug")
+
+		//console.log(idList)
+
+		//console.log(slugTask)
+
+		this.props.dispatch(actions.changeTaskList(data,slugTask))
+
+	}
+
 	render(){
 
 		return(
@@ -54,9 +88,12 @@ class CardListContainer extends React.Component{
 				createNewTask = {this.createNewTask}
 				tasks = {this.props.tasks}
 				eliminateTask = {this.eliminateTask}
+				onDragStart = {this.onDragStart}
+				onDragOver = {this.onDragOver}
+				onDrop = {this.onDrop}
+
 			>
 			</CardList>
-
 		)
 
 	}
