@@ -47,7 +47,14 @@ export function addList(data){
 			//console.log(result)
 
 			dispatch(addListSuccess(result))
+		
+		
+		}).catch((error)=>{
+
+			console.log(error)
 		})
+
+
 	}
 }
 
