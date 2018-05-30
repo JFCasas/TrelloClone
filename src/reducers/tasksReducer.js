@@ -16,6 +16,25 @@ export default function tasksReducer(state = [] , action ){
 			//console.log(state)
 			//console.log(action.task)
 			return state.filter( (document) => {return document._id !== action.task._id})
+
+		case 'CHANGE_TASK_LIST':
+
+			//console.log(state)
+			//console.log(action.task)
+
+			return state.map( (document) => {
+		        
+		        if(document._id !== action.task._id) {
+		            // This isn't the item we care about - keep it as-is
+		            return document;
+		        }
+		        // Otherwise, this is the one we want - return an updated value
+		        return {
+		            ...document,
+		            ...action.task
+		        };    
+		    });
+					
 			
 			
 		default: 

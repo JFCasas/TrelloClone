@@ -84,9 +84,9 @@ export function changeTaskList(data,slugTask){
 
 		requests.changeTaskList(data,slugTask,user.jwt).then((result)=>{
 
-			console.log(result)
+			//console.log(result)
 
-			//dispatch(deleteTaskSuccess(result))
+			dispatch(changeTaskListSuccess(result))
 		})
 	}
 }
