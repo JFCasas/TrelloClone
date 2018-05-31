@@ -38,7 +38,7 @@ export function addDasboard(data){
 
 		requests.createDashboard(data,user.jwt).then((result)=>{
 
-			//console.log(result)
+			console.log(result)
 
 			dispatch(addBoardSuccess(result))
 		})
