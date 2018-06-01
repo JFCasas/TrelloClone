@@ -11,6 +11,13 @@ export default function boardsReducer(state = [] , action ){
 			/*return [action.board].concat(state)*/
 			return state.concat([action.board])
 
+		case 'ADD_BOARD_FAILED':
+
+			console.log(action.error)
+
+			return state
+
+		
 		case 'DELETE_BOARD':
 
 			//console.log(state)

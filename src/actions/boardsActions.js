@@ -27,6 +27,11 @@ export function addBoardSuccess(board){
 	return {type: 'ADD_BOARD' , board}
 }
 
+export function addBoardFailed(error){
+
+	return {type: 'ADD_BOARD_FAILED' , error}
+}
+
 
 export function addDasboard(data){
 
@@ -38,9 +43,18 @@ export function addDasboard(data){
 
 		requests.createDashboard(data,user.jwt).then((result)=>{
 
-			console.log(result)
+			if(result.success){
 
-			dispatch(addBoardSuccess(result))
+				dispatch(addBoardSuccess(result.doc))
+			
+			}else{
+
+				//dispatch(addBoardFailed())
+
+				console.log(result.message)
+
+				dispatch(addBoardFailed(result.message))
+			}
 		})
 	}
 }
