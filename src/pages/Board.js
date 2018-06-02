@@ -39,6 +39,9 @@ export default class Board extends React.Component{
 
 					<div className="col-xs-12 col-sm-12 col-md-12">
 
+						{this.props.displayError()}
+						{this.props.displayErrorTask()}
+
 						<ListGenerator
 								
 							createList={this.props.createList}>

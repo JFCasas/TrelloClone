@@ -27,6 +27,11 @@ export function addTaskSuccess(task){
 	return {type: 'ADD_TASK' , task}
 }
 
+export function addTaskFailed(error){
+
+	return {type: 'ADD_TASK_FAILED' , error}
+}
+
 
 export function addTask(data){
 
@@ -40,7 +45,23 @@ export function addTask(data){
 
 			//console.log(result)
 
-			dispatch(addTaskSuccess(result))
+			//dispatch(addTaskSuccess(result))
+
+			if(result.success){
+
+				dispatch(addTaskSuccess(result.doc))
+			
+			}else{
+
+				//dispatch(addBoardFailed())
+
+				//console.log(result.message)
+
+				dispatch(addTaskFailed(result.message))
+			}
+		}).catch((error)=>{
+
+			console.log(error)
 		})
 	}
 }
@@ -61,6 +82,8 @@ export function deleteTask(slug){
 		requests.deleteTask(slug,user.jwt).then((result)=>{
 
 			dispatch(deleteTaskSuccess(result))
+
+
 
 
 		})

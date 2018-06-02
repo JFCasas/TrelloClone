@@ -33,6 +33,11 @@ export function addListSuccess(list){
 	return {type: 'ADD_LIST' , list}
 }
 
+export function addListFailed(error){
+
+	return {type: 'ADD_LIST_FAILED' , error}
+}
+
 
 export function addList(data){
 
@@ -46,7 +51,20 @@ export function addList(data){
 
 			//console.log(result)
 
-			dispatch(addListSuccess(result))
+			//dispatch(addListSuccess(result))
+
+			if(result.success){
+
+				dispatch(addListSuccess(result.doc))
+			
+			}else{
+
+				//dispatch(addBoardFailed())
+
+				//console.log(result.message)
+
+				dispatch(addListFailed(result.message))
+			}
 		
 		
 		}).catch((error)=>{

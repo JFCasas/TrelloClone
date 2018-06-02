@@ -217,4 +217,14 @@ body,html{
   color: #000;
 }
 
+.error {
+
+	
+	margin-bottom: 2em;
+	background-color: #F0F4C3;
+	padding:2em;
+	width:20vw;
+	border-radius: 2em;
+}
+
 

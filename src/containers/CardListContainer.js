@@ -104,7 +104,7 @@ function mapStateToProps(state,ownProps){
 	return {
 
 		user: state.user,
-		tasks: state.tasks
+		tasks: state.tasks.items
 		
 	}
 }

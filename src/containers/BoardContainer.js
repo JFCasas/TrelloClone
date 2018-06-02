@@ -12,6 +12,8 @@ import * as actions from '../actions/listsActions'
 
 import * as actionsTasks from '../actions/tasksActions'
 
+import Error from '../components/Error'
+
 class BoardContainer extends React.Component{
 
 	constructor(props){
@@ -27,8 +29,8 @@ class BoardContainer extends React.Component{
 
 		this.createList = this.createList.bind(this)
 		this.eliminateList = this.eliminateList.bind(this)
-
-	
+		this.displayError = this.displayError.bind(this)
+		this.displayErrorTask = this.displayErrorTask.bind(this)
 	}
 
 	
@@ -94,6 +96,46 @@ class BoardContainer extends React.Component{
 		this.props.dispatch(actionsTasks.loadAll(slug))
 	}
 
+	displayError(){
+
+		if (this.props.error){
+
+			//console.log(this.props.error)
+
+			return(
+
+				<Error 
+
+					error= {this.props.error}
+
+				> 
+
+				</Error>
+
+			) 
+		}
+	}
+
+	displayErrorTask(){
+
+		if (this.props.errorTask){
+
+			//console.log(this.props.error)
+
+			return(
+
+				<Error 
+
+					error= {this.props.errorTask}
+
+				> 
+
+				</Error>
+
+			) 
+		}
+	}
+
 
 
 
@@ -110,6 +152,8 @@ class BoardContainer extends React.Component{
 				eliminateList = {this.eliminateList}
 				dispatch = {this.props.dispatch}
 				slugboard = {this.props.match.params.slug}
+				displayError = {this.displayError}
+				displayErrorTask = {this.displayErrorTask}
 
 			></Board>
 
@@ -127,8 +171,10 @@ function mapStateToProps(state,ownProps){
 
 		user: state.user,
 		board: state.board,
-		lists: state.lists,
-		tasks: state.tasks
+		lists: state.lists.items,
+		error: state.lists.error,
+		tasks: state.tasks.items,
+		errorTask: state.tasks.errorTask
 	}
 }
 

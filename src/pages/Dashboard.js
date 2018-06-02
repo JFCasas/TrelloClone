@@ -30,14 +30,19 @@ export default class Dashboard extends React.Component{
 
 	render(){
 
+
+
 		return(
 
+			
 			<div className="container" >
 
 				
 				<div className="row" style={{"marginTop":"5em"}}>
 
 					<div className="col-xs-12 col-sm-12 col-md-12">
+
+						{this.props.displayError()}
 
 						<div className="dashboard">
 

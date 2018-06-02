@@ -51,10 +51,14 @@ export function addDasboard(data){
 
 				//dispatch(addBoardFailed())
 
-				console.log(result.message)
+				//console.log(result.message)
 
 				dispatch(addBoardFailed(result.message))
 			}
+		
+		}).catch((error)=>{
+
+			console.log(error)
 		})
 	}
 }

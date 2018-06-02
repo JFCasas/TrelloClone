@@ -6,7 +6,7 @@ import Dashboard from '../pages/Dashboard.js'
 
 import FullCardGenerator from '../components/FullCardGenerator'
 import PartialCardGenerator from '../components/PartialCardGenerator'
-
+import Error from '../components/Error'
 
 
 import * as actions from '../actions/boardsActions'
@@ -31,6 +31,7 @@ class DashboardContainer extends React.Component{
 		
 		this.createNewBoard = this.createNewBoard.bind(this)
 		this.eliminateBoard = this.eliminateBoard.bind(this)
+		this.displayError = this.displayError.bind(this)
 		
 	}
 
@@ -98,6 +99,26 @@ class DashboardContainer extends React.Component{
 		this.props.dispatch(actions.deleteDasboard(slug))
 	}
 
+	displayError(){
+
+		if (this.props.error){
+
+			//console.log(this.props.error)
+
+			return(
+
+				<Error 
+
+					error= {this.props.error}
+
+				> 
+
+				</Error>
+
+			) 
+		}
+	}
+
 
 	render(){
 
@@ -113,6 +134,10 @@ class DashboardContainer extends React.Component{
 
 				choiceCardGenerator = {this.choiceCardGenerator}
 
+				error = {this.props.error}
+
+				displayError = {this.displayError}
+
 			></Dashboard>
 
 
@@ -125,7 +150,8 @@ function mapStateToProps(state,ownProps){
 	return {
 
 		user: state.user,
-		boards: state.boards
+		boards: state.boards.items,
+		error: state.boards.error
 
 	}
 
