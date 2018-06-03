@@ -17,6 +17,7 @@ class CardListContainer extends React.Component{
 		this.onDragStart = this.onDragStart.bind(this)
 		this.onDragOver = this.onDragOver.bind(this)
 		this.onDrop = this.onDrop.bind(this)
+		this.onDropTask = this.onDropTask.bind(this)
 	}
 	
 
@@ -45,9 +46,11 @@ class CardListContainer extends React.Component{
 
 	}
 
-	onDragStart(e,slug){
+	onDragStart(e,task){
 
-		e.dataTransfer.setData("slug",slug)
+		//console.log(task)
+
+		e.dataTransfer.setData("task",task)
 
 	}
 
@@ -67,15 +70,36 @@ class CardListContainer extends React.Component{
       		
     	}
 
-		const slugTask = e.dataTransfer.getData("slug")
+		const task = e.dataTransfer.getData("task")
 
-		//console.log(idList)
+		const slugTask = JSON.parse(task).slug
 
-		//console.log(slugTask)
-
+		
 		this.props.dispatch(actions.changeTaskList(data,slugTask))
 
 	}
+
+	onDropTask(e,slugTaskDestination,listTaskDestination){
+
+		
+		const task = e.dataTransfer.getData("task")
+
+		const slugTaskOrigin = JSON.parse(task).slug
+
+		const listTaskOrigin = JSON.parse(task).list
+		
+		if (listTaskOrigin === listTaskDestination){
+
+			//console.log(slugTaskOrigin)
+			//console.log(slugTaskDestination)
+			//console.log(listTaskDestination)
+		}
+
+		//this.props.dispatch(actions.changeTaskTask())
+
+	}
+
+
 
 	render(){
 
@@ -91,6 +115,7 @@ class CardListContainer extends React.Component{
 				onDragStart = {this.onDragStart}
 				onDragOver = {this.onDragOver}
 				onDrop = {this.onDrop}
+				onDropTask = {this.onDropTask}
 
 			>
 			</CardList>

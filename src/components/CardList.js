@@ -43,6 +43,8 @@ export default class CardList extends React.Component{
     			<CardTask task = {task} key= {index} 
     					  eliminateTask = {this.props.eliminateTask}
     					  onDragStart = {this.props.onDragStart}
+    					  onDropTask = {this.props.onDropTask}
+    					  onDragOver = {this.props.onDragOver}
     			>
     				
 				</CardTask>

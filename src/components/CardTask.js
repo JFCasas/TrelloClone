@@ -5,6 +5,24 @@ import {Card, CardText} from 'material-ui/Card';
 export default class CardTask extends React.Component{
 
 	
+	
+	constructor(props){
+
+		super(props)
+		
+		const data = {
+      		slug: this.props.task.slug,
+      		list: this.props.task._list 
+    	};
+
+    	this.state = {
+
+			data : data
+			
+		}
+
+    }
+
 
 	render(){
 
@@ -14,8 +32,11 @@ export default class CardTask extends React.Component{
 
 				  draggable
 
-				  onDragStart={(e)=>this.props.onDragStart(e,this.props.task.slug)}
+				  onDragStart={(e)=>this.props.onDragStart(e,JSON.stringify(this.state.data))}
 
+				  onDragOver={(e)=>this.props.onDragOver(e)}  
+				  
+				  onDrop={(e)=>this.props.onDropTask(e,this.props.task.slug,this.props.task._list)}
 			>
 
 			  <div className="aux-card-task">
