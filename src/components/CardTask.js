@@ -5,6 +5,7 @@ import {Card, CardText} from 'material-ui/Card';
 export default class CardTask extends React.Component{
 
 	
+	
 
 	render(){
 
@@ -14,7 +15,7 @@ export default class CardTask extends React.Component{
 
 				  draggable
 
-				  onDragStart={(e)=>this.props.onDragStart(e,this.props.task.slug)}
+				  onDragStart={(e)=>this.props.onDragStart(e,JSON.stringify(this.props.task))}
 
 			>
 
